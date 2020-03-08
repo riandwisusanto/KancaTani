@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "814023406351",
+    "firebase_url": "https://kancatani-c0fe5.firebaseio.com",
+    "project_id": "kancatani-c0fe5",
+    "storage_bucket": "kancatani-c0fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814023406351:android:4ed58eaeaf1a3fc523447a",
+        "android_client_info": {
+          "package_name": "com.example.kancatani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814023406351-rir63l39ie0n8jill6vr7bdgfokansur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kancatani",
+            "certificate_hash": "19c089f26bf2203a5fbb47428b30a508110f27c3"
+          }
+        },
+        {
+          "client_id": "814023406351-1erfbn28ats3ubbkohhpdgbfshl1s4pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5RQAvq9_eWBNb-KY5KxRtlRUqtaleogc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814023406351-1erfbn28ats3ubbkohhpdgbfshl1s4pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
