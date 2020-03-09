@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.kancatani.Dashboard.DashboardActivity
+import com.example.kancatani.Home.HomeActivity
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -35,10 +35,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         loading.visibility = View.GONE
+        ref = FirebaseDatabase.getInstance().getReference("pengguna")
         auth = FirebaseAuth.getInstance()
         SP = Sharepreference()
         if(SP.loadSP(this, "status") == "login"){
-            val intent = Intent(applicationContext, DashboardActivity::class.java)
+            val intent = Intent(applicationContext, HomeActivity::class.java)
             startActivity(intent)
         }
         createRequest()
@@ -66,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
             if(currentUser.isEmailVerified){
                 SP.createSP(this, "status", "login")
                 SP.createSP(this, "id", auth.currentUser!!.uid)
-                startActivity(Intent(this,DashboardActivity::class.java))
+                startActivity(Intent(this,HomeActivity::class.java))
             }else{
                 currentUser.sendEmailVerification()
                 Toast.makeText(this,"Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi",
@@ -121,13 +122,7 @@ class LoginActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                if(cekAkun(account!!.email.toString())){
-                    firebaseAuthWithGoogle(account)
-                }
-                else{
-                    loading.visibility = View.GONE
-                    Toast.makeText(this,"Email belum terdaftar", Toast.LENGTH_SHORT).show()
-                }
+                firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
             }
         }
@@ -139,8 +134,9 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
+                    saveData()
                     loading.visibility = View.GONE
-                    val intent = Intent(applicationContext, DashboardActivity::class.java)
+                    val intent = Intent(applicationContext, HomeActivity::class.java)
                     SP.createSP(this, "status", "login")
                     SP.createSP(this, "id", auth.currentUser!!.uid)
                     startActivity(intent)
@@ -184,5 +180,25 @@ class LoginActivity : AppCompatActivity() {
                     dialog?.cancel()
                 }
             }).create().show()
+    }
+
+    private fun saveData(){
+        val userId = auth.currentUser!!.uid
+
+        if(!cekAkun(auth.currentUser!!.email.toString())){
+            val dataUser = UserModel(userId,
+                "",
+                auth.currentUser!!.email.toString(),
+                "",
+                auth.currentUser!!.displayName.toString(),
+                "",
+                "",
+                auth.currentUser!!.photoUrl.toString())
+
+            ref.child(userId).setValue(dataUser)
+        }else{
+
+        }
+
     }
 }
