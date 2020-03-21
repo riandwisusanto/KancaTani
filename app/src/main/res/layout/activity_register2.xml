@@ -48,12 +48,10 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_putih_in"
-                android:drawableEnd="@drawable/mata"
                 android:ems="10"
                 android:hint="Ketikkan Kata Sandi Anda"
                 android:inputType="textPassword"
-                android:padding="10dp"
-                android:drawableRight="@drawable/mata" />
+                android:padding="10dp" />
 
             <TextView
                 android:id="@+id/skpwdtxt"
@@ -81,7 +79,6 @@
                 android:ems="10"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_putih_in"
-                android:drawableEnd="@drawable/mata"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:hint="Ketikkan Kata Sandi Anda"/>

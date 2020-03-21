@@ -8,5 +8,6 @@
     <color name="colorGreyMuda">#ebebeb</color>
     <color name="colorBlack">#000000</color>
     <color name="bgLoading">#55000000</color>
+    <color name="transparan">#00000000</color>
     <color name="colorPrimaryGrey">#f5f5f5</color>
 </resources>

@@ -51,10 +51,6 @@ class LoginActivity : AppCompatActivity() {
         link_regis.setOnClickListener {
             gotoRegisterPage()
         }
-
-        btn_signingoogle.setOnClickListener {
-            signInGoogle()
-        }
     }
 
     private fun gotoRegisterPage(){

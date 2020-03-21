@@ -37,14 +37,13 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_putih_in"
-                android:drawableStart="@drawable/user_icon"
                 android:drawablePadding="10dp"
-                android:elevation="5dp"
                 android:hint="Email"
                 android:padding="10dp"
-                android:drawableLeft="@drawable/user_icon"
                 android:importantForAutofill="no"
-                android:inputType="textEmailAddress" />
+                android:drawableStart="@drawable/usernameicon"
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/usernameicon" />
 
             <EditText
                 android:id="@+id/formpassword"
@@ -52,14 +51,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_putih_in"
-                android:drawableEnd="@drawable/mata"
                 android:drawablePadding="10dp"
-                android:elevation="5dp"
                 android:hint="Password"
-                android:padding="10dp"
-                android:drawableLeft="@drawable/pass_icon"
-                android:drawableStart="@drawable/pass_icon"
-                android:drawableRight="@drawable/mata" />
+                android:padding="10dp" />
 
             <Button
                 android:id="@+id/btn_masuk"
@@ -72,33 +66,6 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
-
-            <RelativeLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"
-                android:id="@+id/btn_signingoogle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/box_grey"
-                android:paddingLeft="8dp"
-                >
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/google"
-                    android:layout_centerVertical="true"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Masuk Dengan Akun Google"
-                    android:gravity="center"
-                    android:layout_marginLeft="40dp"/>
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
