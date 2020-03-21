@@ -82,6 +82,9 @@ class Register2Activity : AppCompatActivity() {
         val userId = auth.currentUser!!.uid
         val dataUser = UserModel(userId,
             "",
+            " ",
+            " ",
+            " ",
             email,
             "",
             nama,

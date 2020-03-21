@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Home.HomeActivity"/>
+        <activity android:name=".Home.ui.profile.EditAlamat"></activity>
+        <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Login.Register2Activity" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
