@@ -6,12 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo"
+        android:icon="@mipmap/logo_apps"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Home.ui.profile.EditAlamat"></activity>
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true">
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".Login.Register2Activity" />
         <activity android:name=".Login.RegisterActivity" />

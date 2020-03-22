@@ -13,7 +13,8 @@
         >
         <ImageView
             android:focusable="true"
-            android:clickable="true"
+            android:visibility="invisible"
+            android:clickable="false"
             android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btn_back"
             android:padding="13dp"
@@ -24,14 +25,13 @@
             />
         <ImageView
             android:focusable="true"
-            android:visibility="invisible"
-            android:clickable="false"
+            android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             android:id="@+id/btn_save"
             android:padding="13dp"
             android:layout_width="55dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_ceklis"
+            app:srcCompat="@drawable/ic_edit"
             android:layout_alignParentRight="true"
             />
 
@@ -43,7 +43,9 @@
             android:layout_marginLeft="9dp"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="9dp"
-            android:src="@mipmap/logo" />
+            android:src="@mipmap/logo_apps" />
+
+
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -65,12 +67,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/pp"/>
+                    android:src="@mipmap/logo_splash"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/background_transparan"/>
                 <TextView
+                    android:focusable="true"
+                    android:visibility="invisible"
+                    android:clickable="false"
                     android:id="@+id/ganti_foto_background"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -95,6 +100,9 @@
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"/>
                     <TextView
+                        android:focusable="true"
+                        android:visibility="invisible"
+                        android:clickable="false"
                         android:id="@+id/ganti_foto_profil"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
@@ -142,10 +150,10 @@
                         android:text="miqbalulh"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
-                        android:drawableEnd="@drawable/ic_edit" />
+                        android:focusable="true"
+                        android:clickable="false" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -185,9 +193,10 @@
                         android:text="28/01/1999"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
+                        android:focusable="true"
+                        android:clickable="false"
                         />
                 </LinearLayout>
 
@@ -227,9 +236,10 @@
                         android:text="Laki - Laki"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
+                        android:focusable="true"
+                        android:clickable="false"
                         />
                 </LinearLayout>
 
@@ -274,7 +284,8 @@
                         android:text="01539969070"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
+                        android:focusable="true"
+                        android:clickable="false"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
                         />
@@ -316,7 +327,8 @@
                         android:text="iq*******@gmail.com"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
+                        android:focusable="true"
+                        android:clickable="false"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
                         />
@@ -363,7 +375,8 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:drawableRight="@drawable/ic_edit"
+                        android:focusable="true"
+                        android:clickable="false"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
                         />
