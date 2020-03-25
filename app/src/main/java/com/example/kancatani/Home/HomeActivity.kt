@@ -1,6 +1,10 @@
 package com.example.kancatani.Home
 
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -25,5 +29,26 @@ class HomeActivity : AppCompatActivity() {
             )
         )
         navView.setupWithNavController(navController)
+    }
+
+    override fun onBackPressed() {
+        val alertDialog = AlertDialog.Builder(this)
+        Toast.makeText(this, "Back is Clicked", Toast.LENGTH_SHORT)
+        alertDialog.setTitle("Keluar Aplikasi")
+        alertDialog.setMessage("Apakah anda mau keluar dari aplikasi ?")
+            .setCancelable(false)
+            .setPositiveButton("YA", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface?, id: Int) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        finishAffinity()
+                    }
+                }
+            })
+
+            .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener{
+                override fun onClick(dialog: DialogInterface?, id: Int) {
+                    dialog?.cancel()
+                }
+            }).create().show()
     }
 }

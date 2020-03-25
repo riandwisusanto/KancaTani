@@ -177,7 +177,7 @@
                 android:minHeight="45dp"
                 android:maxHeight="60dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp" />
         </LinearLayout>
 
 
