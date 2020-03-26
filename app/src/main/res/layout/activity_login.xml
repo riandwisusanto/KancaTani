@@ -52,8 +52,11 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_putih_in"
                 android:drawablePadding="10dp"
+                android:drawableStart="@drawable/passicon"
                 android:hint="Password"
-                android:padding="10dp" />
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/passicon" />
 
             <Button
                 android:id="@+id/btn_masuk"

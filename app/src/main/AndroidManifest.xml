@@ -3,6 +3,8 @@
     package="com.example.kancatani">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -13,10 +15,11 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="false"
         android:largeHeap="true">
-        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".HomePembeli.HomePembeli" />
         <activity android:name=".Login.Register2Activity" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".Login.RegisterKelengkapan"/>
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

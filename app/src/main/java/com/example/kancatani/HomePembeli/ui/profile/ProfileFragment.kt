@@ -1,4 +1,4 @@
-package com.example.kancatani.Home.ui.profile
+package com.example.kancatani.HomePembeli.ui.profile
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -13,7 +13,6 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.kancatani.Login.LoginActivity
@@ -29,8 +28,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_edit_alamat.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -107,7 +104,7 @@ class ProfileFragment : Fragment() {
         }
 
         profil_telp.setOnClickListener {
-            editform("notelp")
+            editform("telp")
         }
 
         profil_jk.setOnClickListener {
@@ -155,10 +152,10 @@ class ProfileFragment : Fragment() {
             println("klik" + dx)
             println(profil_tgllahir.text.toString())
             if(profil_tgllahir.text.toString() == dx){
-                DatePickerDialog(context!!.applicationContext, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
+                DatePickerDialog(context?.applicationContext!!, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
             }
             else{
-                DatePickerDialog(context!!.applicationContext, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
+                DatePickerDialog(context?.applicationContext!!, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
             }
         }
 
@@ -178,7 +175,7 @@ class ProfileFragment : Fragment() {
         }
         val logout = root.findViewById<Button>(R.id.btn_keluar)
         logout.setOnClickListener {
-            val alertDialog = AlertDialog.Builder(context?.applicationContext)
+            val alertDialog = AlertDialog.Builder(this.context)
             Toast.makeText(context?.applicationContext, "Back is Clicked", Toast.LENGTH_SHORT)
             alertDialog.setTitle("Keluar Akun")
             alertDialog.setMessage("Apakah anda mau keluar dari akun ini ?")
@@ -461,8 +458,7 @@ class ProfileFragment : Fragment() {
     }
 
     fun gantiJK(){
-        val dialog = Dialog(context!!.applicationContext)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dialog = Dialog(this.context!!)
         dialog.setTitle("Ganti Jenis Kelamin")
         dialog.setContentView(R.layout.activity_edit_jeniskelamin)
 

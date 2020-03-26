@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.kancatani.Home.ui.home.HomeFragment"
+        android:name="com.example.kancatani.HomePembeli.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.kancatani.Home.ui.keranjang.KeranjangFragment"
+        android:name="com.example.kancatani.HomePembeli.ui.keranjang.KeranjangFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_keranjang" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.kancatani.Home.ui.profile.ProfileFragment"
+        android:name="com.example.kancatani.HomePembeli.ui.profile.ProfileFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.kancatani.Home
+package com.example.kancatani.HomePenjual
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -9,11 +9,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kancatani.R
 
-class HomeActivity : AppCompatActivity() {
+class HomePenjual : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

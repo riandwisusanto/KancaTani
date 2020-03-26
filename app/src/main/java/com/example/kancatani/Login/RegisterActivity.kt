@@ -39,12 +39,22 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun StartActRegisDua(){
-        val intent = Intent(this, Register2Activity::class.java)
-        intent.putExtra("activity","RegisterSatu")
-        intent.putExtra("nama", et_nama.text.toString())
-        intent.putExtra("email",et_email.text.toString())
-        startActivity(intent)
-        this.finish()
+        val status = intent.getStringExtra("status")
+        if(status == "pembeli"){
+            val intent = Intent(this, Register2Activity::class.java)
+            intent.putExtra("activity","pembeli")
+            intent.putExtra("nama", et_nama.text.toString())
+            intent.putExtra("email",et_email.text.toString())
+            startActivity(intent)
+            this.finish()
+        }
+        else{
+            val intent = Intent(this, RegisterKelengkapan::class.java)
+            intent.putExtra("nama", et_nama.text.toString())
+            intent.putExtra("email",et_email.text.toString())
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     private fun cekEmailFormat(email :String):Boolean{

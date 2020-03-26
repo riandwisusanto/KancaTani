@@ -1,4 +1,4 @@
-package com.example.kancatani.Home.ui.profile
+package com.example.kancatani.HomePenjual.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
