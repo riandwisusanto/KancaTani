@@ -8,7 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.kancatani.Home.HomeActivity
+import com.example.kancatani.HomePembeli.HomePembeli
+import com.example.kancatani.HomePenjual.HomePenjual
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -39,8 +40,13 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         SP = Sharepreference()
         if(SP.loadSP(this, "status") == "login"){
-            val intent = Intent(applicationContext, HomeActivity::class.java)
-            startActivity(intent)
+            if(SP.loadSP(this, "st") == "pemebeli"){
+                val intent = Intent(applicationContext, HomePembeli::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(applicationContext, HomePenjual::class.java)
+                startActivity(intent)
+            }
         }
         createRequest()
 
@@ -54,16 +60,44 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun gotoRegisterPage(){
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
+
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle("Daftar Akun")
+        alertDialog.setMessage("Anda ingin mendaftar sebagai ?")
+            .setCancelable(true)
+            .setPositiveButton("PEMBELI", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface?, id: Int) {
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                    intent.putExtra("status","pembeli")
+                    startActivity(intent)
+                }
+            })
+
+            .setNegativeButton("PENJUAL", object: DialogInterface.OnClickListener{
+                override fun onClick(dialog: DialogInterface?, id: Int) {
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                    intent.putExtra("status","penjual")
+                    startActivity(intent)
+                }
+            })
+            .create().show()
     }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser != null){
             if(currentUser.isEmailVerified){
-                SP.createSP(this, "status", "login")
-                SP.createSP(this, "id", auth.currentUser!!.uid)
-                startActivity(Intent(this,HomeActivity::class.java))
+                if(cekPengguna(currentUser) == "pembeli"){
+                    SP.createSP(this, "status", "login")
+                    SP.createSP(this, "st", "pembeli")
+                    SP.createSP(this, "id", auth.currentUser!!.uid)
+                    startActivity(Intent(this,HomePembeli::class.java))
+                }
+                else{
+                    SP.createSP(this, "status", "login")
+                    SP.createSP(this, "st", "penjual")
+                    SP.createSP(this, "id", auth.currentUser!!.uid)
+                    startActivity(Intent(this,HomePenjual::class.java))
+                }
             }else{
                 currentUser.sendEmailVerification()
                 Toast.makeText(this,"Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi",
@@ -83,7 +117,6 @@ class LoginActivity : AppCompatActivity() {
             formpassword.error = "Data tidak boleh kosong"
             formpassword.requestFocus()
         }else{
-
             auth.signInWithEmailAndPassword(formusername.text.toString(),formpassword.text.toString()).addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     val currentUser = auth.currentUser
@@ -93,6 +126,22 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun cekPengguna(firebaseUser: FirebaseUser): String{
+        var result = toString()
+        val query = FirebaseDatabase.getInstance().getReference("pengguna").child(firebaseUser.uid)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(data: DataSnapshot) {
+                if(data.exists()){
+                    val value = data.getValue(UserModel::class.java)
+                    result = value!!.status
+                }
+            }
+        })
+        return result
     }
 
     private fun createRequest(){
@@ -132,7 +181,7 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     saveData()
                     loading.visibility = View.GONE
-                    val intent = Intent(applicationContext, HomeActivity::class.java)
+                    val intent = Intent(applicationContext, HomePembeli::class.java)
                     SP.createSP(this, "status", "login")
                     SP.createSP(this, "id", auth.currentUser!!.uid)
                     startActivity(intent)

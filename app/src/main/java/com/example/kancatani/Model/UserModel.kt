@@ -2,6 +2,7 @@ package com.example.kancatani.Model
 
 data class UserModel(
     var id: String = "",
+    var status: String = "",
     var alamat :String = "",
     var provinsi: String = "",
     var kota: String = "",
@@ -11,5 +12,7 @@ data class UserModel(
     var nama: String = "",
     var notelp: String = "",
     var tgllahir: String = "",
-    var foto: String = ""
+    var foto: String = "",
+    var ktp: String = "",
+    var fototoko: String = ""
 )

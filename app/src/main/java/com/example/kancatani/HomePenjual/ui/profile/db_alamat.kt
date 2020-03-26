@@ -1,4 +1,4 @@
-package com.example.kancatani.Home.ui.profile
+package com.example.kancatani.HomePenjual.ui.profile
 
 object db_alamat {
 

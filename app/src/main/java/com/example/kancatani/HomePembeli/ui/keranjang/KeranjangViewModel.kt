@@ -1,13 +1,13 @@
-package com.example.kancatani.Home.ui.home
+package com.example.kancatani.HomePembeli.ui.keranjang
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class KeranjangViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+        value = "This is dashboard Fragment"
     }
     val text: LiveData<String> = _text
 }

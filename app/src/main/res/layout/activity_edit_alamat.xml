@@ -19,7 +19,6 @@
             android:padding="13dp"
             android:layout_width="55dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_back"
             android:layout_alignParentLeft="true"
             />
         <TextView
@@ -40,7 +39,6 @@
             android:padding="13dp"
             android:layout_width="55dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_ceklis"
             android:layout_alignParentRight="true"
             />
 
@@ -73,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:minHeight="45dp"
                 android:maxHeight="60dp"
-                android:background="@color/transparan"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"/>
         </LinearLayout>
@@ -180,7 +177,7 @@
                 android:minHeight="45dp"
                 android:maxHeight="60dp"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp"/>
+                android:paddingRight="10dp" />
         </LinearLayout>
 
 
