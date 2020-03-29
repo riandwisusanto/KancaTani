@@ -116,9 +116,8 @@ class Register2Activity : AppCompatActivity() {
             nama,
             "-",
             "1/1/1999",
-            "x",
-            noktp,
-            string
+            string,
+            noktp
         )
         ref.child(userId).setValue(dataUser)
     }
@@ -126,7 +125,7 @@ class Register2Activity : AppCompatActivity() {
     private fun uploadImageToFirebaseStorage() {
         val uid = auth.currentUser!!.uid
         if(fototoko == null){
-            saveUserToDB(" ")
+            saveUserToDB("x")
         }
         else{
             val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/fototoko")

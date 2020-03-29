@@ -13,6 +13,5 @@ data class UserModel(
     var notelp: String = "",
     var tgllahir: String = "",
     var foto: String = "",
-    var ktp: String = "",
-    var fototoko: String = ""
+    var ktp: String = ""
 )
