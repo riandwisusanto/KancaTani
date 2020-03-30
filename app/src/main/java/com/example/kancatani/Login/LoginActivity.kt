@@ -79,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
             if(currentUser.isEmailVerified){
                 cekPengguna(currentUser)
             }else{
-                currentUser.sendEmailVerification()
                 Toast.makeText(this,"Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi",
                     Toast.LENGTH_LONG).show()
                 auth.signOut()

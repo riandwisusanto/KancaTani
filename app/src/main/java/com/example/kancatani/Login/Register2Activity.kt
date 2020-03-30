@@ -22,8 +22,9 @@ class Register2Activity : AppCompatActivity() {
 
     private var nama = " "
     private var email = " "
-    private var fototoko = " "
+    private var fototoko = "x"
     private var noktp = " "
+    private var status = "pembeli"
     private lateinit var ref : DatabaseReference
     private lateinit var auth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +32,10 @@ class Register2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_register2)
         auth = FirebaseAuth.getInstance()
         ref = FirebaseDatabase.getInstance().getReference("pengguna")
-        if(intent.getStringExtra("activity") == "penjual"){
+        if(intent.getStringExtra("status") == "penjual"){
             fototoko = intent.getStringExtra("fototoko").toString()
             noktp = intent.getStringExtra("noktp").toString()
+            status = "penjual"
             println("fototoko = " + fototoko)
         }
         nama = intent.getStringExtra("nama").toString()
@@ -73,8 +75,9 @@ class Register2Activity : AppCompatActivity() {
     private fun createUserWithEmail(){
         auth.createUserWithEmailAndPassword(email,et_password.text.toString()).addOnCompleteListener { task->
             if(task.isSuccessful){
-                if(intent.getStringExtra("activity") == "penjual"){
+                if(intent.getStringExtra("status") == "penjual"){
                     val alertDialog = AlertDialog.Builder(this)
+                    uploadImageToFirebaseStorage()
                     alertDialog.setTitle("Tunggu Konfirmasi !")
                     alertDialog.setMessage("Silahkan menunggu data anda divalidasi oleh pihak KancaTani, Verifikasi akun akan" +
                                 "dikirim melalui email anda dalam 1x24jam")
@@ -106,7 +109,7 @@ class Register2Activity : AppCompatActivity() {
     private fun saveUserToDB(string: String){
         val userId = auth.currentUser!!.uid
         val dataUser = UserModel(userId,
-            intent.getStringExtra("activity").toString(),
+            status,
             "-",
             " ",
             " ",
@@ -124,7 +127,7 @@ class Register2Activity : AppCompatActivity() {
 
     private fun uploadImageToFirebaseStorage() {
         val uid = auth.currentUser!!.uid
-        if(fototoko == null){
+        if(fototoko == "x"){
             saveUserToDB("x")
         }
         else{

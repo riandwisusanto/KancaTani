@@ -11,7 +11,7 @@
         android:title="Lapak" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profil"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="Akun" />
 </menu>

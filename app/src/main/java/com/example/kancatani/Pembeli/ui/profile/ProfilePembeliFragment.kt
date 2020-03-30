@@ -512,12 +512,11 @@ class ProfilePembeliFragment : Fragment() {
     private fun uploadImageToFirebaseStorage() {
         val uid = SP.loadSP(context!!.applicationContext, "id")
         if(selectedPhoto == null){
-            savetodatabase()
+            savetodatabase("x")
         }
         else{
             val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/fotoprofil")
             putfile(ref, selectedPhoto!!)
-            savetodatabase()
         }
     }
 
@@ -525,7 +524,7 @@ class ProfilePembeliFragment : Fragment() {
         ref.putFile(isi)
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
-                    SP.createSP(this@ProfilePembeliFragment.context!!, "fotoprofil", it.toString())
+                    savetodatabase(it.toString())
                 }
             }
             .addOnFailureListener {
@@ -533,16 +532,17 @@ class ProfilePembeliFragment : Fragment() {
             }
     }
 
-    private fun savetodatabase(){
+    private fun savetodatabase(string: String){
         val ref = FirebaseDatabase.getInstance().getReference("pengguna").child(SP.loadSP(context!!.applicationContext, "id"))
-        val value = UserModel(SP.loadSP(context!!.applicationContext, "id"), SP.loadSP(context!!.applicationContext, "alamat"),
+        val value = UserModel(SP.loadSP(context!!.applicationContext, "id"),
+            SP.loadSP(context!!.applicationContext, "st"),
+            SP.loadSP(context!!.applicationContext, "alamat"),
             SP.loadSP(context!!.applicationContext, "provinsi"), SP.loadSP(context!!.applicationContext, "kota"),
             SP.loadSP(context!!.applicationContext, "kecamatan"), SP.loadSP(context!!.applicationContext, "email"),
             SP.loadSP(context!!.applicationContext, "jk"), SP.loadSP(context!!.applicationContext, "username"),
             SP.loadSP(context!!.applicationContext, "notelp"), profil_tgllahir.text.toString(),
-            SP.loadSP(context!!.applicationContext, "fotoprofil"))
-
-        println("uri = " + SP.loadSP(context!!.applicationContext, "fotoprofil"))
+            string, "x")
+        selectedPhoto = null
 
         ref.setValue(value).addOnCompleteListener {
             Toast.makeText(context!!.applicationContext, "Berhasil Disimpan", Toast.LENGTH_SHORT).show()

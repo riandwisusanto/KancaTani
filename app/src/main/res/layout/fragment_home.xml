@@ -126,7 +126,7 @@
                             android:id="@+id/bttopup"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/wallet"/>
+                            app:srcCompat="@drawable/wallet"/>
                         <TextView
                             android:id="@+id/topuptxt"
                             android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
                             android:id="@+id/bttarik"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/tarik"/>
+                            app:srcCompat="@drawable/tarik"/>
                         <TextView
                             android:id="@+id/tariktxt"
                             android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
                             android:id="@+id/btriwayat"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/history"/>
+                            app:srcCompat="@drawable/history"/>
                         <TextView
                             android:id="@+id/riwayattxt"
                             android:layout_width="wrap_content"
@@ -210,7 +210,7 @@
                             android:id="@+id/btporganik"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/porganik"/>
+                            app:srcCompat="@drawable/porganik"/>
                         <TextView
                             android:id="@+id/porganiktxt"
                             android:layout_width="wrap_content"
@@ -231,7 +231,7 @@
                             android:id="@+id/btpkimia"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/pkimia"/>
+                            app:srcCompat="@drawable/pkimia"/>
                         <TextView
                             android:id="@+id/pkimiatxt"
                             android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
                             android:id="@+id/btalat"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/alat"/>
+                            app:srcCompat="@drawable/alat"/>
                         <TextView
                             android:id="@+id/alattxt"
                             android:layout_width="wrap_content"
@@ -283,7 +283,7 @@
                             android:id="@+id/btpadi"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/padi"/>
+                            app:srcCompat="@drawable/padi"/>
                         <TextView
                             android:id="@+id/paditxt"
                             android:layout_width="wrap_content"
@@ -304,7 +304,7 @@
                             android:id="@+id/btjagung"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/jagung"/>
+                            app:srcCompat="@drawable/jagung"/>
                         <TextView
                             android:id="@+id/jagungtxt"
                             android:layout_width="wrap_content"
@@ -325,7 +325,7 @@
                             android:id="@+id/btobat"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:background="@drawable/obat"/>
+                            app:srcCompat="@drawable/obat"/>
                         <TextView
                             android:id="@+id/obattxt"
                             android:layout_width="wrap_content"
