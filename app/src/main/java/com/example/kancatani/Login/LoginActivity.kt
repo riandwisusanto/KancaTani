@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.kancatani.HomePembeli.HomePembeli
-import com.example.kancatani.HomePenjual.HomePenjual
+import com.example.kancatani.Pembeli.HomePembeli
 import com.example.kancatani.Model.UserModel
+import com.example.kancatani.Penjual.PenjualActivity
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var mGoogleSignInClient : GoogleSignInClient
     private val RC_SIGN_IN: Int = 0
     lateinit var SP: Sharepreference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -39,18 +38,10 @@ class LoginActivity : AppCompatActivity() {
         ref = FirebaseDatabase.getInstance().getReference("pengguna")
         auth = FirebaseAuth.getInstance()
         SP = Sharepreference()
-        if(SP.loadSP(this, "status") == "login"){
-            if(SP.loadSP(this, "st") == "pemebeli"){
-                val intent = Intent(applicationContext, HomePembeli::class.java)
-                startActivity(intent)
-            }else{
-                val intent = Intent(applicationContext, HomePenjual::class.java)
-                startActivity(intent)
-            }
-        }
         createRequest()
 
         btn_masuk.setOnClickListener {
+            loading.visibility = View.VISIBLE
             doLogin()
         }
 
@@ -86,20 +77,8 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser != null){
             if(currentUser.isEmailVerified){
-                if(cekPengguna(currentUser) == "pembeli"){
-                    SP.createSP(this, "status", "login")
-                    SP.createSP(this, "st", "pembeli")
-                    SP.createSP(this, "id", auth.currentUser!!.uid)
-                    startActivity(Intent(this,HomePembeli::class.java))
-                }
-                else{
-                    SP.createSP(this, "status", "login")
-                    SP.createSP(this, "st", "penjual")
-                    SP.createSP(this, "id", auth.currentUser!!.uid)
-                    startActivity(Intent(this,HomePenjual::class.java))
-                }
+                cekPengguna(currentUser)
             }else{
-                currentUser.sendEmailVerification()
                 Toast.makeText(this,"Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi",
                     Toast.LENGTH_LONG).show()
                 auth.signOut()
@@ -128,8 +107,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun cekPengguna(firebaseUser: FirebaseUser): String{
-        var result = toString()
+    private fun cekPengguna(firebaseUser: FirebaseUser){
         val query = FirebaseDatabase.getInstance().getReference("pengguna").child(firebaseUser.uid)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -137,11 +115,21 @@ class LoginActivity : AppCompatActivity() {
             override fun onDataChange(data: DataSnapshot) {
                 if(data.exists()){
                     val value = data.getValue(UserModel::class.java)
-                    result = value!!.status
+                    if(value!!.status == "pembeli"){
+                        SP.createSP(applicationContext, "status", "login")
+                        SP.createSP(applicationContext, "st", "pembeli")
+                        SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
+                        startActivity(Intent(applicationContext,HomePembeli::class.java))
+                    }
+                    else{
+                        SP.createSP(applicationContext, "status", "login")
+                        SP.createSP(applicationContext, "st", "penjual")
+                        SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
+                        startActivity(Intent(applicationContext, PenjualActivity::class.java))
+                    }
                 }
             }
         })
-        return result
     }
 
     private fun createRequest(){

@@ -15,7 +15,7 @@ class SplashScreen : AppCompatActivity() {
             override fun run() {
                 try {
                     java.lang.Thread.sleep(2500)
-                    val intent = android.content.Intent(applicationContext, LoginActivity::class.java)
+                    val intent = android.content.Intent(applicationContext, SplashScrennMenu::class.java)
                     startActivity(intent)
                 } catch (e: Exception){
                     e.printStackTrace()

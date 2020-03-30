@@ -35,7 +35,7 @@ class RegisterKelengkapan : AppCompatActivity() {
 
         btn_selesai.setOnClickListener {
             val intent = Intent(this, Register2Activity::class.java)
-            intent.putExtra("activity","penjual")
+            intent.putExtra("status","penjual")
             intent.putExtra("noktp", et_ktp.text.toString())
             if(selectedPhoto != null){
                 intent.putExtra("fototoko", selectedPhoto.toString())
