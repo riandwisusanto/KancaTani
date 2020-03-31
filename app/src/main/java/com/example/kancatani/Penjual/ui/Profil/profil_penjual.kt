@@ -6,6 +6,8 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -29,6 +31,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import java.io.ByteArrayOutputStream
+import java.io.FileNotFoundException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -53,6 +58,7 @@ class profil_penjual : Fragment() {
     lateinit var profil_email: TextView
     lateinit var profil_ktp: TextView
     lateinit var btn_save: ImageView
+    lateinit var loading: RelativeLayout
 
     var c = Calendar.getInstance()
     var selectedPhoto: Uri? = null
@@ -70,6 +76,8 @@ class profil_penjual : Fragment() {
 
         SP = Sharepreference()
         auth = FirebaseAuth.getInstance()
+        loading = root.findViewById(R.id.loading)
+        loading.visibility = View.VISIBLE
         loaddata()
         //setawal
 
@@ -156,10 +164,10 @@ class profil_penjual : Fragment() {
             println("klik" + dx)
             println(profil_tgllahir.text.toString())
             if(profil_tgllahir.text.toString() == dx){
-                DatePickerDialog(context?.applicationContext!!, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
+                DatePickerDialog(this.context!!, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
             }
             else{
-                DatePickerDialog(context?.applicationContext!!, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
+                DatePickerDialog(this.context!!, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
             }
         }
 
@@ -179,7 +187,7 @@ class profil_penjual : Fragment() {
         }
         val logout = root.findViewById<Button>(R.id.btn_keluar)
         logout.setOnClickListener {
-            val alertDialog = AlertDialog.Builder(context?.applicationContext)
+            val alertDialog = AlertDialog.Builder(context)
             Toast.makeText(context?.applicationContext, "Back is Clicked", Toast.LENGTH_SHORT)
             alertDialog.setTitle("Keluar Akun")
             alertDialog.setMessage("Apakah anda mau keluar dari akun ini ?")
@@ -235,6 +243,7 @@ class profil_penjual : Fragment() {
                             SP.createSP(this@profil_penjual.context!!, "provinsi", vl.provinsi)
                             SP.createSP(this@profil_penjual.context!!, "kota", vl.kota)
                             SP.createSP(this@profil_penjual.context!!, "kecamatan", vl.kecamatan)
+                            loading.visibility = View.GONE
                         }
                     }
                 }
@@ -243,7 +252,7 @@ class profil_penjual : Fragment() {
     }
 
     private fun editform(string: String){
-        val dialog = AlertDialog.Builder(context?.applicationContext)
+        val dialog = AlertDialog.Builder(context)
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.activity_edit_form, null)
 
@@ -296,7 +305,7 @@ class profil_penjual : Fragment() {
     }
 
     private fun editalamat(){
-        dialogalamat = AlertDialog.Builder(context!!.applicationContext)
+        dialogalamat = AlertDialog.Builder(context)
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.activity_edit_alamat, null)
 
@@ -462,7 +471,7 @@ class profil_penjual : Fragment() {
     }
 
     fun gantiJK(){
-        val dialog = Dialog(context!!.applicationContext)
+        val dialog = Dialog(this!!.context!!)
         dialog.setTitle("Ganti Jenis Kelamin")
         dialog.setContentView(R.layout.activity_edit_jeniskelamin)
 
@@ -518,14 +527,28 @@ class profil_penjual : Fragment() {
             savetodatabase()
         }
         else{
-            val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/fotoprofil")
+            val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/fototoko")
             putfile(ref, selectedPhoto!!)
             savetodatabase()
         }
     }
 
     private fun putfile(ref: StorageReference, isi: Uri){
-        ref.putFile(isi)
+        var imageStream: InputStream? = null
+        try {
+            imageStream = this.context!!.getContentResolver().openInputStream(
+                isi
+            )
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+
+        val bmp = BitmapFactory.decodeStream(imageStream)
+
+        val stream = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.WEBP, 10, stream)
+        val byteArray: ByteArray = stream.toByteArray()
+        ref.putBytes(byteArray)
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
                     SP.createSP(this.context!!, "fotoprofil", it.toString())
@@ -538,7 +561,8 @@ class profil_penjual : Fragment() {
 
     private fun savetodatabase(){
         val ref = FirebaseDatabase.getInstance().getReference("pengguna").child(SP.loadSP(context!!.applicationContext, "id"))
-        val value = UserModel(SP.loadSP(context!!.applicationContext, "id"), SP.loadSP(context!!.applicationContext, "alamat"),
+        val value = UserModel(SP.loadSP(context!!.applicationContext, "id"),
+            SP.loadSP(context!!.applicationContext, "st"), SP.loadSP(context!!.applicationContext, "alamat"),
             SP.loadSP(context!!.applicationContext, "provinsi"), SP.loadSP(context!!.applicationContext, "kota"),
             SP.loadSP(context!!.applicationContext, "kecamatan"), SP.loadSP(context!!.applicationContext, "email"),
             SP.loadSP(context!!.applicationContext, "jk"), SP.loadSP(context!!.applicationContext, "username"),
@@ -555,7 +579,7 @@ class profil_penjual : Fragment() {
     }
 
     fun gantipassword(){
-        val dialog = AlertDialog.Builder(this.context)
+        val dialog = AlertDialog.Builder(context)
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.activity_ganti_password, null)
 
