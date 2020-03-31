@@ -6,6 +6,8 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -29,6 +31,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
+import java.io.ByteArrayOutputStream
+import java.io.FileNotFoundException
+import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -153,10 +158,10 @@ class ProfilePembeliFragment : Fragment() {
             println("klik" + dx)
             println(profil_tgllahir.text.toString())
             if(profil_tgllahir.text.toString() == dx){
-                DatePickerDialog(context?.applicationContext!!, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
+                DatePickerDialog(this.context!!, date, th.toInt()-1, mt.toInt()-1, dy.toInt()-1).show()
             }
             else{
-                DatePickerDialog(context?.applicationContext!!, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
+                DatePickerDialog(this.context!!, date, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
             }
         }
 
@@ -512,7 +517,7 @@ class ProfilePembeliFragment : Fragment() {
     private fun uploadImageToFirebaseStorage() {
         val uid = SP.loadSP(context!!.applicationContext, "id")
         if(selectedPhoto == null){
-            savetodatabase("x")
+            savetodatabase(SP.loadSP(this.context!!, "fotoprofil"))
         }
         else{
             val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/fotoprofil")
@@ -521,7 +526,21 @@ class ProfilePembeliFragment : Fragment() {
     }
 
     private fun putfile(ref: StorageReference, isi: Uri){
-        ref.putFile(isi)
+        var imageStream: InputStream? = null
+        try {
+            imageStream = this.context!!.getContentResolver().openInputStream(
+                isi
+            )
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+
+        val bmp = BitmapFactory.decodeStream(imageStream)
+
+        val stream = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.WEBP, 10, stream)
+        val byteArray: ByteArray = stream.toByteArray()
+        ref.putBytes(byteArray)
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
                     savetodatabase(it.toString())
