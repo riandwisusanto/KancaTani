@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -44,6 +45,44 @@ class HomeFragment : Fragment() {
         val cari = view.findViewById<SearchView>(R.id.btcari)
         cari.setOnClickListener {
             val intent = Intent(this.context, SearchBarang::class.java)
+            startActivity(intent)
+        }
+
+        val pupukorganik = view.findViewById<ImageButton>(R.id.btporganik)
+        val pupukkimia = view.findViewById<ImageButton>(R.id.btpkimia)
+        val alat = view.findViewById<ImageButton>(R.id.btalat)
+        val padi = view.findViewById<ImageButton>(R.id.btpadi)
+        val jagung = view.findViewById<ImageButton>(R.id.btjagung)
+        val obatkimia = view.findViewById<ImageButton>(R.id.btobat)
+
+        pupukorganik.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Pupuk Organik")
+            startActivity(intent)
+        }
+        pupukkimia.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Pupuk Kimia")
+            startActivity(intent)
+        }
+        alat.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Alat Pertanian")
+            startActivity(intent)
+        }
+        padi.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Benih Padi")
+            startActivity(intent)
+        }
+        jagung.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Benih Jagung")
+            startActivity(intent)
+        }
+        obatkimia.setOnClickListener {
+            val intent = Intent(this.context, SearchBarang::class.java)
+            intent.putExtra("kategori", "Obat Kimia")
             startActivity(intent)
         }
 

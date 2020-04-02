@@ -15,5 +15,6 @@ data class BarangModel(
     var provinsi: String = "",
     var kota: String= "",
     var kecamatan: String = "",
-    var terjual: Int = 0
+    var terjual: Int = 0,
+    var ongkir: Int = 1000
 )

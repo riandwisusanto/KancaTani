@@ -25,6 +25,7 @@ import com.example.kancatani.SharePreference.Sharepreference
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.tambah_barang.*
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
@@ -134,6 +135,7 @@ class lapak_penjual : Fragment() {
         val deskripsi = view.findViewById<TextView>(R.id.deskripsi)
         val cod = view.findViewById<Button>(R.id.cod)
         val antar = view.findViewById<Button>(R.id.antar)
+        val ongkir = view.findViewById<EditText>(R.id.ongkir)
         val ambil = view.findViewById<Button>(R.id.ambil)
         val foto = view.findViewById<Button>(R.id.btn_fotobarang)
 
@@ -153,10 +155,12 @@ class lapak_penjual : Fragment() {
             if (antart) {
                 antar.setBackgroundColor(resources.getColor(R.color.colorGreyMuda))
                 pengiriman.remove(antar.text.toString())
+                ongkir.visibility = View.GONE
                 antart = false
             } else {
                 antar.setBackgroundColor(resources.getColor(R.color.colorWhite))
                 pengiriman.add(antar.text.toString())
+                ongkir.visibility = View.VISIBLE
                 antart = true
             }
         }
@@ -199,7 +203,7 @@ class lapak_penjual : Fragment() {
             }
         }
 
-        val arraykategori = arrayOf("Benih", "Obat", "Alat","Pupuk")
+        val arraykategori = arrayOf("Pupuk Organik", "Pupuk Kimia", "Alat Pertanian","Benih Padi","Benih Jagung","Obat Kimia")
         val adapterkategori = ArrayAdapter(context!!.applicationContext, R.layout.support_simple_spinner_dropdown_item, arraykategori)
 
         kategori.adapter = adapterkategori
@@ -226,8 +230,12 @@ class lapak_penjual : Fragment() {
                     val ref = FirebaseDatabase.getInstance().getReference("barang")
                     val id = ref.push().key.toString()
                     println("id = " + id)
+                    var onkir = 0
+                    if(ongkir.text.isNotEmpty()){
+                        onkir = ongkir.text.toString().toInt()
+                    }
                     uploadImageToFirebaseStorage(id, namabarang.text.toString()
-                        , harga.text.toString(), deskripsi.text.toString(), stok.text.toString(), ref)
+                        , harga.text.toString(), deskripsi.text.toString(), stok.text.toString(), ref, onkir)
                     p1?.cancel()
                 }
             })
@@ -247,10 +255,10 @@ class lapak_penjual : Fragment() {
         }
     }
 
-    private fun uploadImageToFirebaseStorage(id: String, namabarang: String, harga: String, deskripsi: String, stok: String, refe: DatabaseReference){
+    private fun uploadImageToFirebaseStorage(id: String, namabarang: String, harga: String, deskripsi: String, stok: String, refe: DatabaseReference, ongkir: Int){
         val uid = SP.loadSP(context!!.applicationContext, "id")
         if(fotoselected == null){
-            savetodatabase(id, namabarang, harga, deskripsi, stok, refe, "x")
+            savetodatabase(id, namabarang, harga, deskripsi, stok, refe, "x", ongkir)
         }
         else{
             val ref = FirebaseStorage.getInstance().getReference("pengguna/$uid/$id/fotobarang")
@@ -271,7 +279,7 @@ class lapak_penjual : Fragment() {
             ref.putBytes(byteArray)
                 .addOnSuccessListener {
                     ref.downloadUrl.addOnSuccessListener {
-                        savetodatabase(id, namabarang, harga, deskripsi, stok, refe, it.toString())
+                        savetodatabase(id, namabarang, harga, deskripsi, stok, refe, it.toString(), ongkir)
                     }
                 }
                 .addOnFailureListener {
@@ -280,7 +288,7 @@ class lapak_penjual : Fragment() {
         }
     }
 
-    private fun savetodatabase(id: String, namabarang: String, harga: String, deskripsi: String, stok: String, ref: DatabaseReference, fotobar: String){
+    private fun savetodatabase(id: String, namabarang: String, harga: String, deskripsi: String, stok: String, ref: DatabaseReference, fotobar: String, ongkir: Int){
         val referens = FirebaseDatabase.getInstance().getReference("pengguna")
             .orderByChild("id").equalTo(SP.loadSP(context!!.applicationContext, "id"))
         referens.addValueEventListener(object : ValueEventListener{
@@ -297,7 +305,7 @@ class lapak_penjual : Fragment() {
                             namabarang, harga.toInt(),
                             kategorit,  deskripsi, pengiriman , "0",
                             stok.toInt()
-                            , kondisit , vale!!.provinsi, vale.kota, vale.kecamatan, 0)
+                            , kondisit , vale!!.provinsi, vale.kota, vale.kecamatan, 0, ongkir)
                         ref.child(id).setValue(value).addOnCompleteListener {
                             Toast.makeText(context, "Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
                         }

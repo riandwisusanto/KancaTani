@@ -42,21 +42,27 @@ class SearchBarang : AppCompatActivity() {
         listbarang = arrayListOf()
         clik = "bintang"
         cari = ""
+
+        var kategori = "x"
+        if(intent.getStringExtra("kategori") != null){
+            kategori = intent.getStringExtra("kategori").toString()
+        }
+
         adapter = BarangAdapter(applicationContext, listbarang)
         list_search.layoutManager = GridLayoutManager(this, 2)
         loading.visibility = View.VISIBLE
-        loadbarang(cari,clik,0,999999,5,"x","x","x","x","x")
+        loadbarang(cari,clik,0,999999,5,"x",kategori,"x","x","x")
 
         btn_populer.setOnClickListener {
             loading.visibility = View.VISIBLE
             clik = "bintang"
-            loadbarang(cari,clik,0,999999,5,"x","x","x","x","x")
+            loadbarang(cari,clik,0,999999,5,"x",kategori,"x","x","x")
         }
 
         btn_harga.setOnClickListener {
             loading.visibility = View.VISIBLE
             clik = "harga"
-            loadbarang(cari,clik,0,999999,5,"x","x","x","x","x")
+            loadbarang(cari,clik,0,999999,5,"x",kategori,"x","x","x")
         }
 
         text_search1.addTextChangedListener(object : TextWatcher{
@@ -70,7 +76,7 @@ class SearchBarang : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 cari = text_search1.text.toString().trim()
-                loadbarang(cari,clik,0,999999,5,"x","x","x","x","x")
+                loadbarang(cari,clik,0,999999,5,"x",kategori,"x","x","x")
             }
 
         })

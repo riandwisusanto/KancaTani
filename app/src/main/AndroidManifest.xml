@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pembeli.ui.home.lihat_barang_pembeli"></activity>
+        <activity android:name=".Pembeli.ui.home.keranjang_barang_pembeli"></activity>
+        <activity android:name=".Pembeli.ui.home.lihat_barang_pembeli" />
         <activity android:name=".Pembeli.ui.home.SearchBarang" />
         <activity android:name=".SplashScreen.SplashScrennMenu" />
         <activity android:name=".SplashScreen.SplashScreen2" />

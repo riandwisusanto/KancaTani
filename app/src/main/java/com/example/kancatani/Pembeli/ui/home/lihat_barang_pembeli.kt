@@ -1,5 +1,6 @@
 package com.example.kancatani.Pembeli.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,8 +21,17 @@ class lihat_barang_pembeli : AppCompatActivity() {
         setContentView(R.layout.activity_lihat_barang_pembeli)
 
         loading.visibility = View.VISIBLE
+        if(intent.getStringExtra("set") != null){
+            checkout.visibility = View.GONE
+        }
         val id = intent.getStringExtra("id").toString()
         load(id)
+
+        checkout.setOnClickListener {
+            val intent = Intent(this, keranjang_barang_pembeli::class.java)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }
     }
 
     private fun load(id: String){
