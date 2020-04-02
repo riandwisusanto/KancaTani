@@ -135,6 +135,12 @@
                 android:background="@color/colorGreyMuda"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/ongkir"
+                android:visibility="gone"
+                android:hint="Ongkos Kirim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <Button
                 android:id="@+id/ambil"
                 android:text="Ambil Sendiri"

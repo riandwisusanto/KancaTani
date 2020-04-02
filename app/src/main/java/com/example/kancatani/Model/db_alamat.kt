@@ -3,11 +3,11 @@ package com.example.kancatani.Model
 object db_alamat {
 
     val provinsi = arrayOf(
-        " ", "Jawa Timur", "Jawa Barat"
+        "x", "Jawa Timur", "Jawa Barat"
     )
 
     val kota = arrayOf(
-        alamatmodel(" ", arrayOf(" ")),
+        alamatmodel("x", arrayOf("x")),
         alamatmodel(
             "Jawa Timur",
             arrayOf("Ponorogo", "Madiun", "Surabaya")
@@ -16,7 +16,7 @@ object db_alamat {
     )
 
     val kecamatan = arrayOf(
-        alamatmodel(" ", arrayOf(" ")),
+        alamatmodel("x", arrayOf("x")),
         alamatmodel(
             "Ponorogo",
             arrayOf("Sooko", "Pudak", "Pulung")
