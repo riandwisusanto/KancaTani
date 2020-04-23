@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/home"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/home"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/splash_screen1"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -22,16 +24,9 @@
                 android:text="Lokasi Saat Ini"
                 android:textStyle="bold"
                 android:textSize="17sp"
-                app:drawableLeftCompat="@drawable/place"
+                app:drawableLeftCompat="@drawable/ic_place_black_24dp"
                 android:drawablePadding="10dp"/>
-            <ImageView
-                android:id="@+id/pilih_lokasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/menu"
-                android:layout_toRightOf="@id/lokasitxt"
-                android:layout_marginLeft="50dp"/>
+
             <SearchView
                 android:id="@+id/btcari"
                 android:layout_width="match_parent"
@@ -62,21 +57,13 @@
                     >
                 </com.denzcoskun.imageslider.ImageSlider>
             </RelativeLayout>
-            <ProgressBar
-                android:id="@+id/progressBarUpdate"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_below="@id/update"
-                android:layout_marginTop="5dp"/>
+
             <RelativeLayout
                 android:id="@+id/kotak_saldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/progressBarUpdate"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/update"
+                android:layout_marginTop="20dp"
                 android:padding="15dp"
                 android:background="@drawable/bg_kotak_ijo"
                 android:elevation="100dp">
@@ -121,14 +108,14 @@
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/bttopup"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="37dp"
+                            android:layout_height="37dp"
                             android:background="@drawable/wallet"/>
                         <TextView
                             android:id="@+id/topuptxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Top Up"
+                            android:text="Isi Saldo"
                             android:layout_below="@id/bttopup"
                             android:textSize="12sp"
                             android:textColor="@color/colorWhite"/>
@@ -165,7 +152,7 @@
                             android:id="@+id/btriwayat"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/history"/>
+                            android:background="@drawable/ic_history_white_24dp"/>
                         <TextView
                             android:id="@+id/riwayattxt"
                             android:layout_width="wrap_content"
@@ -189,7 +176,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/batas1"
-                android:padding="20dp">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp">
                 <LinearLayout
                     android:id="@+id/baris1"
                     android:orientation="horizontal"
@@ -201,12 +191,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btporganik"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:background="@drawable/porganik"/>
                         <TextView
                             android:id="@+id/porganiktxt"
@@ -222,13 +212,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btpkimia"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/pkimia"/>
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/pkimia"/>
                         <TextView
                             android:id="@+id/pkimiatxt"
                             android:layout_width="wrap_content"
@@ -243,13 +233,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btalat"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/alat"/>
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/alat"/>
                         <TextView
                             android:id="@+id/alattxt"
                             android:layout_width="wrap_content"
@@ -274,12 +263,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btpadi"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:background="@drawable/padi"/>
                         <TextView
                             android:id="@+id/paditxt"
@@ -295,12 +284,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginRight="50dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btjagung"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:background="@drawable/jagung"/>
                         <TextView
                             android:id="@+id/jagungtxt"
@@ -316,12 +305,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginRight="20dp"
                         android:padding="5dp">
                         <ImageButton
                             android:id="@+id/btobat"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:background="@drawable/obat"/>
                         <TextView
                             android:id="@+id/obattxt"
@@ -344,7 +332,7 @@
             <TextView
                 android:layout_below="@id/batas2"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="70dp"/>
         </RelativeLayout>
 
     </ScrollView>
