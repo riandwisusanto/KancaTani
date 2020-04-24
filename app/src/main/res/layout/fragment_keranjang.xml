@@ -1,28 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/header"
-        android:text="Pesanan Anda"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/bg_toolbar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keranjang Saya"
+            android:textSize="22sp"
+            android:textColor="@color/colorBlack"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"/>
+
+        <Button
+            android:id="@+id/riwayat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_outline"
+            android:gravity="center"
+            android:text="Riwayat"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGreentxt"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrol_keranjang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/header"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/riwayat"
-        android:text="Riwayat"
-        android:layout_below="@id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listkeranjang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            tools:itemCount="20"
+            tools:listitem="@layout/list_keranjang" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tidak ada lagi produk"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textColor="@color/colorGreentxt"
+            android:background="@color/colorGreyMuda"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+        </LinearLayout>
+    </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listkeranjang"
-        android:layout_below="@+id/riwayat"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_outline"
+            android:paddingLeft="15dp">
+            <TextView
+                android:id="@+id/totaltxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:text="Total Harga Rp."
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/totaltxt"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:text="100.000"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/bayar"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_kotak_ijo"
+                android:gravity="center"
+                android:text="Checkout"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:clickable="true"
+                android:elevation="10dp"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colorWhite"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

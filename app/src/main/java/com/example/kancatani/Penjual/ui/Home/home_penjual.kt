@@ -15,6 +15,7 @@ import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.kancatani.Adapter.PesananAdapter
 import com.example.kancatani.Chat.ChatActivity
+import com.example.kancatani.Model.IklanModel
 import com.example.kancatani.Model.PesananModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
@@ -52,11 +53,23 @@ class home_penjual : Fragment() {
 
         val isBerita = view.findViewById<ImageSlider>(R.id.berita_imageslider)
         val slideModel  = ArrayList<SlideModel>()
-        slideModel.add(SlideModel(R.drawable.liquid,true))
-        slideModel.add(SlideModel(R.drawable.jugg,true))
-        slideModel.add(SlideModel(R.drawable.liquid,true))
-        slideModel.add(SlideModel(R.drawable.jugg,true))
-        isBerita.setImageList(slideModel,true)
+        val refbarang = FirebaseDatabase.getInstance().getReference("iklan_penjual")
+        refbarang.addValueEventListener(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    p0.children.forEach{
+                        val value = it.getValue(IklanModel::class.java)
+                        slideModel.add(SlideModel(value!!.foto, true))
+                    }
+                    isBerita.setImageList(slideModel,true)
+                }
+            }
+
+        })
 
         pesan.setOnClickListener {
             val intent = Intent(this.context, ChatActivity::class.java)

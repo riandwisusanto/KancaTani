@@ -20,7 +20,7 @@ class RiwayatAdapter(val context: Context, val List : ArrayList<PesananModel>) :
     val SP = Sharepreference()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatAdapter.Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_keranjang, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.list_riwayat, parent, false)
         return Holder(view)
     }
 
@@ -60,6 +60,7 @@ class RiwayatAdapter(val context: Context, val List : ArrayList<PesananModel>) :
             harga.setText(list.harga_total.toString())
             jumlah.setText(list.jumlah.toString())
             waktu.setText(list.waktu_pesan)
+            waktuproses.setText(list.waktu_proses)
 
             if(SP.loadSP(context,"st") == "pembeli"){
                 itemView.setOnClickListener {

@@ -9,20 +9,17 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorGreenbg"
         >
-        <ImageView
-            android:focusable="true"
-            android:visibility="invisible"
-            android:clickable="false"
-            android:foreground="?attr/selectableItemBackground"
-            android:id="@+id/btn_back"
-            android:padding="13dp"
-            android:layout_width="55dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_back"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Akun Saya"
+            android:textSize="22sp"
+            android:textColor="@color/colorBlack"
             android:layout_alignParentLeft="true"
-            />
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"/>
         <ImageView
             android:focusable="true"
             android:clickable="true"
@@ -35,186 +32,115 @@
             android:layout_alignParentRight="true"
             />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="9dp"
-            android:layout_marginLeft="9dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="9dp"
-            android:src="@mipmap/logo_apps" />
-
-
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        android:background="@color/colorPrimaryGrey">
+        app:layout_constraintTop_toBottomOf="@id/header">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorGreenbg">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="175dp"
                 android:layout_marginBottom="2dp"
-                android:gravity="bottom">
-                <ImageView
-                    android:id="@+id/foto_profil"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/logo_splash"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background_transparan"/>
+                android:gravity="center"
+                android:background="@color/colorGreenbg">
+            </RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="125dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-170dp"
+                android:layout_marginBottom="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/bg_profil"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    ></de.hdodenhof.circleimageview.CircleImageView>
                 <TextView
                     android:focusable="true"
                     android:visibility="invisible"
                     android:clickable="false"
-                    android:id="@+id/ganti_foto_background"
+                    android:id="@+id/ganti_foto_profil"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:background="@drawable/background_transparan"
-                    android:text="Tekan untuk ubah"
+                    android:layout_gravity="bottom"
+                    android:text="Ubah"
                     android:textColor="@color/colorWhite"
                     android:gravity="center"
-                    android:textSize="13sp"
-                    android:layout_alignParentBottom="true"
+                    android:textSize="12sp"
                     />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:cardCornerRadius="50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    >
-                    <ImageView
-                        android:id="@+id/bg_profil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"/>
-                    <TextView
-                        android:focusable="true"
-                        android:visibility="invisible"
-                        android:clickable="false"
-                        android:id="@+id/ganti_foto_profil"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:background="@drawable/background_transparan"
-                        android:layout_gravity="bottom"
-                        android:text="Ubah"
-                        android:textColor="@color/colorWhite"
-                        android:gravity="center"
-                        android:textSize="12sp"
-                        />
-                </androidx.cardview.widget.CardView>
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingLeft="10dp"
+                android:clickable="false"
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
-                >
+                android:background="@drawable/bg_putih_in">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:text="Username"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:drawablePadding="10dp"
-                    android:textColor="@color/colorBlack"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    >
+                    android:textColor="@color/colorBlack" />
                     <TextView
                         android:textColor="@color/colorBlack"
                         android:id="@+id/profil_username"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit"
                         android:text="miqbalulh"
                         android:gravity="center_vertical"
-                        android:paddingRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="15dp"
                         android:drawablePadding="15dp"
-                        android:textSize="14dp"
-                        android:focusable="true"
-                        android:clickable="false" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
-                >
+                        android:textSize="16sp"/>
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:text="Tanggal Lahir"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:drawablePadding="10dp"
                     android:textColor="@color/colorBlack"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    >
                     <TextView
                         android:textColor="@color/colorBlack"
                         android:id="@+id/profil_tgllahir"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="28/01/1999"
                         android:gravity="center_vertical"
-                        android:paddingRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="15dp"
                         android:drawablePadding="15dp"
-                        android:textSize="14dp"
-                        android:focusable="true"
-                        android:clickable="false"
+                        android:background="@drawable/bg_edit"
+                        android:textSize="16sp"
                         />
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
-                >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:text="Jenis Kelamin"
                     android:textSize="14dp"
                     android:layout_marginLeft="10dp"
@@ -222,47 +148,27 @@
                     android:drawablePadding="10dp"
                     android:textColor="@color/colorBlack"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    >
                     <TextView
                         android:textColor="@color/colorBlack"
                         android:id="@+id/profil_jk"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Laki - Laki"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="15dp"
                         android:drawablePadding="15dp"
-                        android:textSize="14dp"
-                        android:focusable="true"
-                        android:clickable="false"
+                        android:background="@drawable/bg_edit"
+                        android:textSize="16sp"
                         />
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@color/colorGreyMuda"/>
-
-            <LinearLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
-                >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:text="Telepon"
                     android:textSize="14dp"
                     android:layout_marginLeft="10dp"
@@ -270,93 +176,72 @@
                     android:drawablePadding="10dp"
                     android:textColor="@color/colorBlack"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    >
                     <TextView
                         android:textColor="@color/colorBlack"
                         android:id="@+id/profil_telp"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="01539969070"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:focusable="true"
-                        android:clickable="false"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="15dp"
+                        android:background="@drawable/bg_edit"
                         android:drawablePadding="15dp"
-                        android:textSize="14dp"
+                        android:textSize="16sp"
                         />
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:paddingLeft="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
-                >
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="Email"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail"
                     android:textSize="14dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:drawablePadding="10dp"
                     android:textColor="@color/colorBlack"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:gravity="end"
-                    >
                     <TextView
                         android:textColor="@color/colorBlack"
                         android:id="@+id/profil_email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="iq*******@gmail.com"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:focusable="true"
-                        android:clickable="false"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="15dp"
+                        android:background="@drawable/bg_edit"
                         android:drawablePadding="15dp"
-                        android:textSize="14dp"
+                        android:textSize="16sp"
                         />
-                </LinearLayout>
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@color/colorGreyMuda"/>
 
             <LinearLayout
                 android:focusable="true"
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackground"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
+                android:background="@drawable/bg_putih_in"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="Atur Alamat"
-                    android:textSize="14dp"
+                    android:textSize="16sp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:drawablePadding="10dp"
@@ -375,8 +260,6 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:paddingRight="10dp"
-                        android:focusable="true"
-                        android:clickable="false"
                         android:drawablePadding="15dp"
                         android:textSize="14dp"
                         />
@@ -388,17 +271,19 @@
                 android:clickable="true"
                 android:foreground="?attr/selectableItemBackground"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="2dp"
-                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_putih_in"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="Ubah Kata Sandi"
-                    android:textSize="14dp"
+                    android:textSize="16sp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
                     android:drawablePadding="10dp"
@@ -426,21 +311,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:focusable="true"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
                 android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="2dp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/colorWhite"
                 >
                 <Button
                     android:id="@+id/btn_keluar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/bg_tombol"
                     android:elevation="10dp"
                     android:text="Keluar"
@@ -449,16 +332,10 @@
                     android:textSize="20sp" />
 
             </LinearLayout>
-            <Button
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/bg_tombol"
-                android:elevation="10dp"
-                android:text="---"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
+                android:layout_height="100dp"
+                android:background="@color/colorWhite"/>
         </LinearLayout>
 
     </ScrollView>

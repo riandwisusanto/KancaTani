@@ -51,6 +51,10 @@ class MessageActivity : AppCompatActivity() {
             val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
+
+        report.setOnClickListener{
+            report()
+        }
     }
 
     private fun listenMessage(){
@@ -132,7 +136,7 @@ class MessageActivity : AppCompatActivity() {
                 override fun onClick(p1: DialogInterface?, p2: Int) {
                     val ref = FirebaseDatabase.getInstance().getReference("report")
                     val id = ref.push().key.toString()
-                    val value = ReportModel(id, intent.getStringExtra("id"), report_txt.text.toString())
+                    val value = ReportModel(id, SP.loadSP(applicationContext, "id"), intent.getStringExtra("id"), report_txt.text.toString())
                     ref.child(id).setValue(value).addOnCompleteListener {
                         Toast.makeText(applicationContext, "Berhasil Dilaporkan", Toast.LENGTH_SHORT).show()
                         p1?.cancel()

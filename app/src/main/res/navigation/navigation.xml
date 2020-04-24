@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_lapak"
         android:name="com.example.kancatani.Penjual.ui.Lapak.lapak_penjual"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_keranjang"
         tools:layout="@layout/lapak_penjual_fragment" />
 
     <fragment
