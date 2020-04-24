@@ -96,10 +96,14 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
                     }
 
                     pesananselesai.setOnClickListener {
+                        var ulas = ulasan.text.toString()
+                        if(ulas.isEmpty()){
+                            ulas = "-"
+                        }
                         val refulasan = FirebaseDatabase.getInstance().getReference("ulasan")
                         val id_ulasan = refulasan.push().key
                         val value = UlasanModel(id_ulasan.toString(), list.id, list.id_barang, list.id_penjual, list.id_pembeli,
-                            rating.numStars.toString(), ulasan.text.toString())
+                            rating.numStars.toString(), ulas)
                         refulasan.child(id_ulasan.toString()).setValue(value)
 
                         val refx = FirebaseDatabase.getInstance().getReference("keranjang")

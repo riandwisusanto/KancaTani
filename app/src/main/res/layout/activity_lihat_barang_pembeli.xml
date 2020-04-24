@@ -246,6 +246,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/md"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mc">
@@ -255,6 +256,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="wkwkwkwkwkwkwkwkwkwkwkwk" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@id/md"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Ulasan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ulasan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 

@@ -116,6 +116,11 @@ class PesananAdapter(val context: Context, val List : ArrayList<PesananModel>) :
                 tolak.visibility = View.GONE
             }
 
+            if(bal.status == "Dikirim"){
+                proses.visibility = View.GONE
+                tolak.visibility = View.GONE
+            }
+
             chat.setOnClickListener {
                 val ref = FirebaseDatabase.getInstance().getReference("pengguna").child(bal.id_pembeli)
                 ref.addListenerForSingleValueEvent(object : ValueEventListener{

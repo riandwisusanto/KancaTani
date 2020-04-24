@@ -4,8 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kancatani.Adapter.UlasanAdapter
 import com.example.kancatani.Chat.MessageActivity
 import com.example.kancatani.Model.BarangModel
+import com.example.kancatani.Model.UlasanModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -19,11 +22,14 @@ import kotlinx.android.synthetic.main.activity_lihat_barang_pembeli.*
 class lihat_barang_pembeli : AppCompatActivity() {
 
     lateinit var SP: Sharepreference
+    lateinit var listulasan: ArrayList<UlasanModel>
+    lateinit var adaper: UlasanAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lihat_barang_pembeli)
         SP = Sharepreference()
+        listulasan = arrayListOf()
 
         loading.visibility = View.VISIBLE
         if(intent.getStringExtra("set") != null){
@@ -45,6 +51,10 @@ class lihat_barang_pembeli : AppCompatActivity() {
             intent.putExtra("id", id)
             startActivity(intent)
         }
+
+        ulasan.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        adaper = UlasanAdapter(this, listulasan)
+        loadulasan(id)
     }
 
     private fun load(id: String){
@@ -138,6 +148,31 @@ class lihat_barang_pembeli : AppCompatActivity() {
                         loading.visibility = View.GONE
                     }
                     jumlahproduk.setText(jumlah.toString())
+                }
+            }
+
+        })
+    }
+
+    private fun loadulasan(id: String){
+        val ref = FirebaseDatabase.getInstance().getReference("ulasan")
+            .orderByChild("id_barang").equalTo(id)
+        ref.addValueEventListener(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                listulasan.clear()
+                if(p0.exists()){
+                    p0.children.forEach{
+                        val value = it.getValue(UlasanModel::class.java)
+                        if(value != null){
+                            listulasan.add(value)
+                        }
+                    }
+                    ulasan.adapter = adaper
+                    adaper.notifyDataSetChanged()
                 }
             }
 

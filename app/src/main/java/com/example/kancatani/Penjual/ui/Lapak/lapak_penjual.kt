@@ -16,9 +16,12 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kancatani.Adapter.BarangAdapter
+import com.example.kancatani.Adapter.RiwayatAdapter
 import com.example.kancatani.Model.BarangModel
+import com.example.kancatani.Model.PesananModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -83,6 +86,11 @@ class lapak_penjual : Fragment() {
             if(cari.text.isNotEmpty()){
                 loadbarang(cari.text.toString().trim(), true)
             }
+        }
+
+        val riwayat = root.findViewById<Button>(R.id.riwayat)
+        riwayat.setOnClickListener {
+            riwayat()
         }
         return root
     }
@@ -316,4 +324,40 @@ class lapak_penjual : Fragment() {
         })
     }
 
+    private fun riwayat(){
+        val dialog = AlertDialog.Builder(this.context)
+        val inflater = LayoutInflater.from(context)
+        val view = inflater.inflate(R.layout.riwayat_pembelian_keranjang, null)
+
+        val list = view.findViewById<RecyclerView>(R.id.listriwayat)
+        val listbar = arrayListOf<PesananModel>()
+        list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
+        val adap = RiwayatAdapter(this.context!!, listbar)
+
+        val ref = FirebaseDatabase.getInstance().getReference("keranjang")
+            .orderByChild("id_penjual").equalTo(SP.loadSP(this.context!!, "id"))
+        ref.addValueEventListener(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                listbar.clear()
+                if(p0.exists()){
+                    p0.children.forEach {
+                        val value = it.getValue(PesananModel::class.java)
+                        if(value != null){
+                            if(value.status_diterima == true){
+                                listbar.add(value)
+                            }
+                        }
+                    }
+                    list.adapter = adap
+                    adap.notifyDataSetChanged()
+                }
+            }
+        })
+        dialog.setView(view)
+            .setCancelable(true)
+            .create().show()
+    }
 }
