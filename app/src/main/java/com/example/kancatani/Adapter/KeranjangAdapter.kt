@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kancatani.Interface.ItemClickListener
+import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.PesananModel
 import com.example.kancatani.Model.UlasanModel
 import com.example.kancatani.Pembeli.ui.home.lihat_barang_pembeli
@@ -114,6 +115,8 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
 
                         kalkulasibintang(list.id_barang)
 
+                        setterjual(list.id_barang, list.jumlah)
+
                         val ref = FirebaseDatabase.getInstance().getReference("keranjang")
                             .child(list.id)
                         ref.child("status_diterima").setValue(true).addOnCompleteListener {
@@ -165,6 +168,28 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
                 }
             }
 
+        })
+    }
+
+    private fun setterjual(idbarang: String, jumlah: Int){
+        val ref = FirebaseDatabase.getInstance().getReference("barang")
+            .child(idbarang)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if(p0.exists()){
+                    val value = p0.getValue(BarangModel::class.java)
+                    if(value != null){
+                        val jum = value.terjual
+                        val stok = value.stok
+                        ref.child("terjual").setValue(jum + jumlah)
+                        ref.child("stok").setValue(stok - jumlah)
+                    }
+                }
+            }
         })
     }
 }

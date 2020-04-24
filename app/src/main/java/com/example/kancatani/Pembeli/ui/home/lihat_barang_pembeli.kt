@@ -7,6 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kancatani.Adapter.UlasanAdapter
 import com.example.kancatani.Chat.MessageActivity
+import com.example.kancatani.Etalase_penjual
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UlasanModel
 import com.example.kancatani.Model.UserModel
@@ -49,6 +50,12 @@ class lihat_barang_pembeli : AppCompatActivity() {
         checkout.setOnClickListener {
             val intent = Intent(this, keranjang_barang_pembeli::class.java)
             intent.putExtra("id", id)
+            startActivity(intent)
+        }
+
+        kunjungitoko.setOnClickListener {
+            val intent = Intent(this, Etalase_penjual::class.java)
+            intent.putExtra("id", SP.loadSP(this, "idtk"))
             startActivity(intent)
         }
 
