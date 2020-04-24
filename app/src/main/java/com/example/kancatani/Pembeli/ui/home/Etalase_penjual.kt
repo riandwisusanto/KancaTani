@@ -1,13 +1,13 @@
-package com.example.kancatani
+package com.example.kancatani.Pembeli.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kancatani.Adapter.BarangAdapter
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UserModel
+import com.example.kancatani.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

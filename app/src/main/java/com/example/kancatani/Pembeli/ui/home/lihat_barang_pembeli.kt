@@ -7,7 +7,6 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kancatani.Adapter.UlasanAdapter
 import com.example.kancatani.Chat.MessageActivity
-import com.example.kancatani.Etalase_penjual
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UlasanModel
 import com.example.kancatani.Model.UserModel
