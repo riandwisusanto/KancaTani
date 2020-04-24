@@ -65,7 +65,9 @@ class KeranjangFragment : Fragment() {
                     p0.children.forEach {
                         val value = it.getValue(PesananModel::class.java)
                         if(value != null){
-                            listkerangjang.add(value)
+                            if(value.status_diterima == false){
+                                listkerangjang.add(value)
+                            }
                         }
                     }
                     listkeranjangx.adapter = adapter

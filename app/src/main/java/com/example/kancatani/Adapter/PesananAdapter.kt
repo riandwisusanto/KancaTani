@@ -86,6 +86,10 @@ class PesananAdapter(val context: Context, val List : ArrayList<PesananModel>) :
             val proses = dialog.findViewById<Button>(R.id.terima)
             val chat = dialog.findViewById<ImageButton>(R.id.btpesan)
 
+            if(bal.status == "Diproses"){
+                proses.setText("Kirim")
+            }
+
             val ref = FirebaseDatabase.getInstance().getReference("pengguna").child(bal.id_pembeli)
             ref.addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onCancelled(p0: DatabaseError) {
@@ -109,7 +113,6 @@ class PesananAdapter(val context: Context, val List : ArrayList<PesananModel>) :
             request.setText(bal.pesan)
 
             if(bal.status == "Diproses"){
-                proses.visibility = View.GONE
                 tolak.visibility = View.GONE
             }
 
@@ -140,9 +143,17 @@ class PesananAdapter(val context: Context, val List : ArrayList<PesananModel>) :
                 val sdf = SimpleDateFormat("dd/M/yyyy hh.mm")
                 val waktu = sdf.format(Date())
                 ref.child("waktu_proses").setValue(waktu.toString())
-                ref.child("status").setValue("Diproses").addOnCompleteListener {
-                    Toast.makeText(context, "Pesanan Diproses", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
+                if(bal.status == "Diproses"){
+                    ref.child("status").setValue("Dikirim").addOnCompleteListener {
+                        Toast.makeText(context, "Pesanan Dikirim", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }
+                }
+                else{
+                    ref.child("status").setValue("Diproses").addOnCompleteListener {
+                        Toast.makeText(context, "Pesanan Diproses", Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }
                 }
             }
 

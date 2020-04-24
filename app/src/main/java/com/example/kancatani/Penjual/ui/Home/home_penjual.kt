@@ -103,7 +103,9 @@ class home_penjual : Fragment() {
                         val value = it.getValue(PesananModel::class.java)
                         if(value != null){
                             if(value.status != "Ditolak"){
-                                list.add(value)
+                                if(value.status_diterima == false){
+                                    list.add(value)
+                                }
                             }
                         }
                     }
