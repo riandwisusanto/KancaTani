@@ -33,6 +33,8 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
         val status : TextView
         val harga : TextView
         val jumlah : TextView
+        val waktu : TextView
+        val waktuproses : TextView
 
         init {
             fotobarang = view!!.findViewById(R.id.fotobarang) as ImageView
@@ -40,6 +42,8 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
             status = view.findViewById(R.id.status) as TextView
             harga = view.findViewById(R.id.harga) as TextView
             jumlah = view.findViewById(R.id.jumlah) as TextView
+            waktu = view.findViewById(R.id.waktu) as TextView
+            waktuproses = view.findViewById(R.id.waktuproses) as TextView
         }
 
         fun bind(list: PesananModel, context: Context) {
@@ -48,6 +52,10 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
             status.setText(list.status)
             harga.setText(list.harga_total.toString())
             jumlah.setText(list.jumlah.toString())
+            waktu.setText(list.waktu_pesan)
+            if(list.waktu_proses != "x"){
+                waktuproses.setText(list.waktu_proses)
+            }
             itemView.setOnClickListener {
                 val intent = Intent(context, lihat_barang_pembeli::class.java)
                 intent.putExtra("id", list.id_barang)

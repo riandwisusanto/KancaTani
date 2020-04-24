@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.kancatani.Chat.MessageActivity
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
+import com.example.kancatani.SharePreference.Sharepreference
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,9 +18,12 @@ import kotlinx.android.synthetic.main.activity_lihat_barang_pembeli.*
 
 class lihat_barang_pembeli : AppCompatActivity() {
 
+    lateinit var SP: Sharepreference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lihat_barang_pembeli)
+        SP = Sharepreference()
 
         loading.visibility = View.VISIBLE
         if(intent.getStringExtra("set") != null){
@@ -26,6 +31,14 @@ class lihat_barang_pembeli : AppCompatActivity() {
         }
         val id = intent.getStringExtra("id").toString()
         load(id)
+
+        chat.setOnClickListener {
+            val intent = Intent(this, MessageActivity::class.java)
+            intent.putExtra("id", SP.loadSP(this, "idtk"))
+            intent.putExtra("username", SP.loadSP(this, "usernametk"))
+            intent.putExtra("foto", SP.loadSP(this, "fototk"))
+            startActivity(intent)
+        }
 
         checkout.setOnClickListener {
             val intent = Intent(this, keranjang_barang_pembeli::class.java)
@@ -93,6 +106,11 @@ class lihat_barang_pembeli : AppCompatActivity() {
                             lokasi.setText(valu.kota)
                             dikirimdari.setText(valu.alamat)
                             jumlahproduk(valu.id)
+
+                            //untuk menuju chat
+                            SP.createSP(applicationContext, "fototk", valu.foto)
+                            SP.createSP(applicationContext, "usernametk", valu.nama)
+                            SP.createSP(applicationContext, "idtk", valu.id)
                         }
                     }
                 }

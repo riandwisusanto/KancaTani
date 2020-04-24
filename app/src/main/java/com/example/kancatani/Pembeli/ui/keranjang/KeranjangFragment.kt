@@ -53,7 +53,7 @@ class KeranjangFragment : Fragment() {
 
     private fun loadkeranjang(){
         val ref = FirebaseDatabase.getInstance().getReference("keranjang")
-            .orderByChild("id_lapak").equalTo(SP.loadSP(context!!.applicationContext, "id"))
+            .orderByChild("id_pembeli").equalTo(SP.loadSP(context!!.applicationContext, "id"))
         ref.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 

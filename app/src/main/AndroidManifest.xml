@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Pembeli.ui.home.keranjang_barang_pembeli"></activity>
+        <activity android:name=".Pembeli.ui.keranjang.terima_pesanan"></activity>
+        <activity android:name=".Chat.MessageActivity" />
+        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Pembeli.ui.home.keranjang_barang_pembeli" />
         <activity android:name=".Pembeli.ui.home.lihat_barang_pembeli" />
         <activity android:name=".Pembeli.ui.home.SearchBarang" />
         <activity android:name=".SplashScreen.SplashScrennMenu" />
@@ -26,6 +29,7 @@
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Login.RegisterKelengkapan" />
+        <activity android:name=".Penjual.ui.Lapak.edit_barang" />
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

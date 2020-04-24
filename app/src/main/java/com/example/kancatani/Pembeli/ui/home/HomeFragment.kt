@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.kancatani.Adapter.BarangAdapter
+import com.example.kancatani.Chat.ChatActivity
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.R
@@ -48,12 +49,19 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        val pesan = view.findViewById<ImageButton>(R.id.btpesan)
+
         val pupukorganik = view.findViewById<ImageButton>(R.id.btporganik)
         val pupukkimia = view.findViewById<ImageButton>(R.id.btpkimia)
         val alat = view.findViewById<ImageButton>(R.id.btalat)
         val padi = view.findViewById<ImageButton>(R.id.btpadi)
         val jagung = view.findViewById<ImageButton>(R.id.btjagung)
         val obatkimia = view.findViewById<ImageButton>(R.id.btobat)
+
+        pesan.setOnClickListener {
+            val intent = Intent(this.context, ChatActivity::class.java)
+            startActivity(intent)
+        }
 
         pupukorganik.setOnClickListener {
             val intent = Intent(this.context, SearchBarang::class.java)
@@ -85,6 +93,8 @@ class HomeFragment : Fragment() {
             intent.putExtra("kategori", "Obat Kimia")
             startActivity(intent)
         }
+
+
 
         return view
     }

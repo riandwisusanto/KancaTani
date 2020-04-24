@@ -62,7 +62,7 @@ class lapak_penjual : Fragment() {
             tambahbarang()
         }
 
-        val cari = root.findViewById<EditText>(R.id.btcari)
+        val cari = root.findViewById<EditText>(R.id.text_search1)
         cari.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
 
@@ -78,7 +78,7 @@ class lapak_penjual : Fragment() {
 
         })
 
-        val btncar = root.findViewById<ImageView>(R.id.btncari)
+        val btncar = root.findViewById<ImageView>(R.id.btn_search1)
         btncar.setOnClickListener {
             if(cari.text.isNotEmpty()){
                 loadbarang(cari.text.toString().trim(), true)

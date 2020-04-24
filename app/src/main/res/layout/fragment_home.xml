@@ -32,6 +32,13 @@
                 android:background="@drawable/menu"
                 android:layout_toRightOf="@id/lokasitxt"
                 android:layout_marginLeft="50dp"/>
+            <ImageButton
+                android:background="@drawable/chat"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/btpesan"
+                android:layout_margin="20dp"
+                android:layout_alignParentRight="true"/>
             <SearchView
                 android:id="@+id/btcari"
                 android:layout_width="match_parent"

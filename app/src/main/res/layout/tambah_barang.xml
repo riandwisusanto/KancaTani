@@ -158,4 +158,18 @@
         android:layout_height="wrap_content"
         android:text="Foto Barang"
         />
+
+    <ImageView
+        android:id="@+id/fotobarang"
+        android:visibility="gone"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:id="@+id/simpan"
+        android:text="simpan"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

@@ -84,7 +84,8 @@ class LoginActivity : AppCompatActivity() {
                 auth.signOut()
             }
         }else{
-            Toast.makeText(this,"Login Gagal",Toast.LENGTH_LONG).show()
+            loading.visibility = View.GONE
+            Toast.makeText(this,"Email atau katasandi anda salah",Toast.LENGTH_LONG).show()
         }
     }
 
@@ -115,16 +116,16 @@ class LoginActivity : AppCompatActivity() {
             override fun onDataChange(data: DataSnapshot) {
                 if(data.exists()){
                     val value = data.getValue(UserModel::class.java)
-                    if(value!!.status == "pembeli"){
-                        SP.createSP(applicationContext, "status", "login")
+                    SP.createSP(applicationContext, "username", value!!.nama)
+                    SP.createSP(applicationContext, "fotoprofil", value.foto)
+                    SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
+                    SP.createSP(applicationContext, "status", "login")
+                    if(value.status == "pembeli"){
                         SP.createSP(applicationContext, "st", "pembeli")
-                        SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
                         startActivity(Intent(applicationContext,HomePembeli::class.java))
                     }
                     else{
-                        SP.createSP(applicationContext, "status", "login")
                         SP.createSP(applicationContext, "st", "penjual")
-                        SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
                         startActivity(Intent(applicationContext, PenjualActivity::class.java))
                     }
                 }
