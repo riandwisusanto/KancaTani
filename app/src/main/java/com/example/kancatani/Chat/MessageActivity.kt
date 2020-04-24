@@ -1,9 +1,15 @@
 package com.example.kancatani.Chat
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.EditText
+import android.widget.Toast
 import com.example.kancatani.Model.ChatModel
+import com.example.kancatani.Model.ReportModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
 import com.example.oguru.Class.ChatFromItem
@@ -112,5 +118,32 @@ class MessageActivity : AppCompatActivity() {
             , waktu.toString(), SP.loadSP(this, "username"), SP.loadSP(this, "fotoprofil"))
         referencelatest.setValue(chatMessage)
         referencelatestto.setValue(chatMessageto)
+    }
+
+    private fun report(){
+        val dialog = AlertDialog.Builder(this)
+        val inflater = LayoutInflater.from(this)
+        val view = inflater.inflate(R.layout.report_pengguna, null)
+
+        val report_txt = view.findViewById<EditText>(R.id.reporttxt)
+        dialog.setView(view)
+            .setCancelable(false)
+            .setPositiveButton("Laporkan", object: DialogInterface.OnClickListener{
+                override fun onClick(p1: DialogInterface?, p2: Int) {
+                    val ref = FirebaseDatabase.getInstance().getReference("report")
+                    val id = ref.push().key.toString()
+                    val value = ReportModel(id, intent.getStringExtra("id"), report_txt.text.toString())
+                    ref.child(id).setValue(value).addOnCompleteListener {
+                        Toast.makeText(applicationContext, "Berhasil Dilaporkan", Toast.LENGTH_SHORT).show()
+                        p1?.cancel()
+                    }
+                }
+            })
+            .setNegativeButton("Batal", object : DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    p0?.cancel()
+                }
+            })
+            .create().show()
     }
 }
