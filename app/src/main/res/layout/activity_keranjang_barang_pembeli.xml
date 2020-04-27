@@ -294,7 +294,6 @@
                android:layout_height="wrap_content"
                android:background="@drawable/bg_edit"
                android:padding="10dp">
-
                <TextView
                    android:id="@+id/metodetxt"
                    android:text="Metode Pembayaran"
@@ -429,7 +428,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

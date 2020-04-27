@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kancatani.Adapter.KeranjangAdapter
+import com.example.kancatani.Adapter.RiwayatAdapter
 import com.example.kancatani.Model.PesananModel
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -53,7 +54,7 @@ class KeranjangFragment : Fragment() {
 
     private fun loadkeranjang(){
         val ref = FirebaseDatabase.getInstance().getReference("keranjang")
-            .orderByChild("id_lapak").equalTo(SP.loadSP(context!!.applicationContext, "id"))
+            .orderByChild("id_pembeli").equalTo(SP.loadSP(context!!.applicationContext, "id"))
         ref.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -65,7 +66,9 @@ class KeranjangFragment : Fragment() {
                     p0.children.forEach {
                         val value = it.getValue(PesananModel::class.java)
                         if(value != null){
-                            listkerangjang.add(value)
+                            if(value.status_diterima == false){
+                                listkerangjang.add(value)
+                            }
                         }
                     }
                     listkeranjangx.adapter = adapter
@@ -84,10 +87,10 @@ class KeranjangFragment : Fragment() {
         val list = view.findViewById<RecyclerView>(R.id.listriwayat)
         val listbar = arrayListOf<PesananModel>()
         list.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        val adap = KeranjangAdapter(this.context!!, listbar)
+        val adap = RiwayatAdapter(this.context!!, listbar)
 
-        val ref = FirebaseDatabase.getInstance().getReference("riwayat")
-            .orderByChild("id_lapak").equalTo(SP.loadSP(this.context!!, "id"))
+        val ref = FirebaseDatabase.getInstance().getReference("keranjang")
+            .orderByChild("id_pembeli").equalTo(SP.loadSP(this.context!!, "id"))
         ref.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -98,7 +101,9 @@ class KeranjangFragment : Fragment() {
                     p0.children.forEach {
                         val value = it.getValue(PesananModel::class.java)
                         if(value != null){
-                            listbar.add(value)
+                            if(value.status_diterima == true){
+                                listbar.add(value)
+                            }
                         }
                     }
                     list.adapter = adap

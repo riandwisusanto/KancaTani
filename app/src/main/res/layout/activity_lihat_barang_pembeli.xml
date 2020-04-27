@@ -40,7 +40,7 @@
             android:focusable="true"
             android:clickable="true"
             android:background="@drawable/chat"
-            android:id="@+id/btn_chat"
+            android:id="@+id/chat"
             android:padding="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,11 +117,13 @@
 
                     <TextView
                         android:id="@+id/terjual"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100 Terjual"
                         android:textSize="18sp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -177,12 +179,12 @@
                 android:background="@drawable/bg_edit"
                 android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/fototoko"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
                         android:layout_gravity="center_vertical">
-                    </de.hdodenhof.circleimageview.CircleImageView>
+                    </ImageView>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -386,9 +388,9 @@ ssssssssssss"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ulasan"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/list_keranjang"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"

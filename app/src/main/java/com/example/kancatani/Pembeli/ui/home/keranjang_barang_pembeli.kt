@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_keranjang_barang_pembeli.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class keranjang_barang_pembeli : AppCompatActivity() {
 
@@ -143,10 +146,14 @@ class keranjang_barang_pembeli : AppCompatActivity() {
         if(pesan.isEmpty()){
             pesan = "-"
         }
+        val sdf = SimpleDateFormat("dd/M/yyyy hh.mm")
+        val waktu = sdf.format(Date())
         val value = PesananModel(id, intent.getStringExtra("id").toString(),
-            SP.loadSP(this, "id"), SP.loadSP(this, "fotobarang"),
+            SP.loadSP(this, "id"), SP.loadSP(this, "idtk"),
+            SP.loadSP(this, "username"), SP.loadSP(this, "fotobarang"),
             namabarang.text.toString(), harga.text.toString().toInt(), SP.loadSP(this, "jasapengirim"),
-            jumlahbarang.text.toString().toInt(), pesan, "Tunai", total.text.toString().toInt(), "menunggu")
+            jumlahbarang.text.toString().toInt(), pesan, "Tunai", total.text.toString().toInt(), "menunggu",
+            waktu.toString(), "x", "x", false)
 
         ref.child(id).setValue(value).addOnCompleteListener {
             Toast.makeText(this, "Pesanan Dibuat", Toast.LENGTH_SHORT).show()
