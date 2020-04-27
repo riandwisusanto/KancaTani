@@ -55,7 +55,7 @@
             android:id="@+id/listkeranjang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="10dp"
             tools:itemCount="20"
             tools:listitem="@layout/list_keranjang" />
         <TextView
