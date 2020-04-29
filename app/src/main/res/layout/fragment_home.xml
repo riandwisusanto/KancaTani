@@ -27,6 +27,13 @@
                 android:textSize="17sp"
                 app:drawableLeftCompat="@drawable/ic_place_black_24dp"
                 android:drawablePadding="10dp"/>
+            <ImageButton
+                android:background="@drawable/chat"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/btpesan"
+                android:layout_margin="20dp"
+                android:layout_alignParentRight="true"/>
 
             <SearchView
                 android:id="@+id/btcari"
@@ -88,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:text="100.000"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:layout_toRightOf="@id/rptxt"
                     android:layout_below="@id/saldotxt"
                     android:layout_marginLeft="5dp"

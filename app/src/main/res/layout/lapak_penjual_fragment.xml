@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Penjual.ui.Lapak.lapak_penjual">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/line1"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:gravity="center">
+        android:layout_height="55dp"
+        android:background="@color/colorWhite"
+        android:paddingBottom="10dp">
+        <ImageView
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btn_back"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_back_black"/>
 
         <LinearLayout
             android:layout_toRightOf="@+id/btn_back"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/bg_form_putih"
-            android:orientation="horizontal"
-            >
+            android:layout_marginRight="60dp"
+            android:background="@drawable/bg_search"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/text_search1"
@@ -30,10 +40,13 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"
                 android:background="@color/transparan"
-                android:hint="Cari"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColorHint="@color/colorPrimary" />
+                android:hint="Cari yang kamu butuhkan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="14sp"
+                android:textColorHint="@color/colorGrey" />
             <ImageView
                 android:id="@+id/btn_search1"
                 android:focusable="true"
@@ -45,34 +58,44 @@
                 android:layout_marginLeft="-40dp"
                 android:padding="8dp"/>
         </LinearLayout>
-
-        <Button
+        <ImageView
             android:id="@+id/tambah_barang"
+            android:background="@drawable/ic_add_circle_outline_black_24dp"
+            android:padding="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="tambah barang"
-            />
-
-        <Button
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/riwayat"
+            android:layout_centerVertical="true"/>
+        <ImageView
             android:id="@+id/riwayat"
+            android:background="@drawable/ic_history_black_24dp"
+            android:padding="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="riwayat"
-            />
-
-    </LinearLayout>
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/line1">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/barangdijual"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/barangdijual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+        </LinearLayout>
 
     </ScrollView>
 

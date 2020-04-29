@@ -6,65 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".Pembeli.ui.home.lihat_barang_pembeli">
 
+    <RelativeLayout
+        android:id="@+id/header"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorWhite"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Surface"
+        >
+        <ImageView
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/btn_back"
+            android:background="@drawable/ic_back_black"
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Produk"
+            android:textColor="@color/colorBlack"
+            android:textSize="22sp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
-        <RelativeLayout
-            android:id="@+id/header"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:background="@color/colorWhite">
 
             <ImageView
                 android:id="@+id/gambar_barang"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_edit"/>
 
             <LinearLayout
                 android:id="@+id/nm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/gambar_barang"
-                android:orientation="vertical">
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_edit">
 
                 <TextView
                     android:id="@+id/namabarang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pupuk Organik" />
+                    android:text="Pupuk Organik"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/harga"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 5000,-" />
+                    android:text="Rp. 5000,-"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorGreentxt"
+                    android:layout_marginBottom="10dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_star_black_24dp" />
-
                     <TextView
                         android:id="@+id/rating"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:text="5" />
+                        android:gravity="center_vertical"
+                        android:text="5"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/ic_star_black_24dp" />
 
                     <TextView
                         android:id="@+id/terjual"
+                        android:layout_marginLeft="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100 Terjual" />
-
+                        android:text="100 Terjual"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp" />
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -72,20 +117,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nm"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_edit"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/pengiriman"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="COD, Dikirim, Ambil Sendiri" />
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/pengirimantxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pengiriman"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/pengiriman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COD, Dikirim, Ambil Sendiri"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/ongkir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ongkos Kirim : Rp 5000,-" />
+                    android:text="Ongkos Kirim : Rp 5000"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="5dp"/>
 
             </LinearLayout>
 
@@ -93,14 +158,18 @@
                 android:id="@+id/mc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mm"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_edit"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rincian Produk" />
+                    android:text="Rincian Produk"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,80 +177,101 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Stok" />
+                            android:text="Stok"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Kategori" />
+                            android:text="Kategori"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Kondisi" />
+                            android:text="Kondisi"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Dikirim dari" />
+                            android:text="Dikirim dari"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp">
 
                         <TextView
                             android:id="@+id/stokbarang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="10" />
+                            android:text=": 10"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp"/>
 
                         <TextView
                             android:id="@+id/kategoribarang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Benih" />
+                            android:text=": Benih"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp"/>
 
                         <TextView
                             android:id="@+id/kondisibarang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Baru" />
+                            android:text=": Baru"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp"/>
 
                         <TextView
                             android:id="@+id/dikirimdari"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="alamat" />
+                            android:text=": alamat"
+                            android:textSize="16sp"
+                            android:paddingBottom="10dp"/>
                     </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/mc">
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Produk"
+                    android:textSize="16sp"
+                    android:paddingBottom="10dp"/>
                 <TextView
                     android:id="@id/deskripsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="wkwkwkwkwkwkwkwkwkwkwkwk" />
-
+                    android:text="wkwkwkwkwkwkwkwkwkwkwkwk
+sssssssssssssssssss
+sssssssssssssssssssssssssss
+sssssssssssssssssssssssssssssssssss
+ssssssssssss"
+                    android:textSize="16sp"
+                    android:paddingBottom="10dp"/>
             </LinearLayout>
-
-        </RelativeLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+        </LinearLayout>
     </ScrollView>
 
     <RelativeLayout

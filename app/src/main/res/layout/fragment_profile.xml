@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/colorGreenbg">
+            android:background="@color/colorGreyMuda">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="175dp"
@@ -332,7 +332,7 @@
                     android:text="Keluar"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
             <View

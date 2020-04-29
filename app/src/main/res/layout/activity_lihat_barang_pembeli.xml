@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pembeli.ui.home.lihat_barang_pembeli"
-    android:paddingTop="25dp">
+    >
 
     <RelativeLayout
         android:id="@+id/header"
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pupuk Organik"
-                    android:textSize="20sp"
+                    android:textSize="19sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"/>
 
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rp. 5000,-"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textColor="@color/colorGreentxt"
                     android:layout_marginBottom="10dp"/>
 
@@ -112,8 +112,9 @@
                         android:id="@+id/rating"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:text="5"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:drawableLeft="@drawable/ic_star_black_24dp"/>
 
                     <TextView
@@ -122,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100 Terjual"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="5dp"
                         android:layout_marginStart="20dp" />
 
@@ -148,14 +149,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pengiriman"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="10dp"/>
                     <TextView
                         android:id="@+id/pengiriman"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="COD, Dikirim, Ambil Sendiri"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"/>
@@ -166,7 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Ongkos Kirim : Rp 5000"
-                    android:textSize="17sp"
+                    android:textSize="16sp"
                     android:layout_marginBottom="5dp"/>
             </LinearLayout>
 
@@ -204,7 +205,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="UD Mandiri"
-                                android:textSize="19sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -219,7 +220,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Ponorogo"
-                                android:textSize="19sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginLeft="5dp" />
                         </LinearLayout>
@@ -235,13 +236,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="10"
-                            android:textSize="18sp"/>
+                            android:textSize="16sp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Produk"
-                            android:textSize="18sp"
+                            android:textSize="16sp"
                             android:layout_marginLeft="5dp"/>
                     </LinearLayout>
 
@@ -404,10 +405,10 @@ ssssssssssss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Beli Sekarang"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:background="@drawable/bg_tombol"
+        android:background="@drawable/bg_kotak_ijo"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <RelativeLayout

@@ -1,127 +1,424 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/bg_toolbar"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Surface"
+        >
+        <ImageView
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/btn_back"
+            android:background="@drawable/ic_back_black"
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Pesanan"
+            android:textColor="@color/colorBlack"
+            android:textSize="22sp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:layout_centerVertical="true"/>
+        <ImageButton
+            android:id="@+id/btpesan"
+            android:background="@drawable/chat"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrol_pesanan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        android:layout_marginTop="55dp">
 
         <RelativeLayout
-            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/fotopembeli"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
             <LinearLayout
-                android:id="@+id/nm"
+                android:id="@+id/satu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_edit"
+                >
+                <TextView
+                    android:id="@+id/alamatpen"
+                    android:text="Pembeli"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/fotopembeli"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="5dp">
+                        <TextView
+                            android:id="@+id/namapembeli"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="rian"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/nohppembeli"
+                            android:text="081234567890"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/alamatpembeli"
+                            android:text="Rumah Balerejo No.1"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bar"
+                android:layout_below="@id/satu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fotopembeli"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/bg_edit"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/belitxt"
+                    android:text="Produk yang dibeli "
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_below="@id/belitxt"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/fotobarang"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_below="@id/belitxt"
+                        android:layout_alignParentLeft="true"/>
 
-                    <TextView
-                        android:id="@+id/namapembeli"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="rian" />
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/fotobarang"
+                        android:layout_marginLeft="5dp"
+                        >
+                        <TextView
+                            android:id="@+id/namabarang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Pupuk Organik"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:id="@+id/harga"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 5000,-"
+                            android:textSize="16sp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                    <ImageButton
-                        android:background="@drawable/chat"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:id="@+id/btpesan"/>
+                            <TextView
+                                android:id="@+id/jumlahpesan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="10"
+                                android:textSize="16sp"
+                                />
 
+                            <TextView
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:text="x"
+                                android:textSize="16sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/tiga"
+                android:orientation="vertical"
+                android:layout_below="@id/bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
+                android:padding="10dp">
                 <TextView
-                    android:id="@+id/namabarang"
+                    android:text="Pengiriman"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:id="@+id/atas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pupuk Organik" />
-
-                <TextView
-                    android:id="@+id/harga"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. 5000,-" />
-
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/jasakirimtxt"
+                        android:text="Jasa Kirim"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"/>
+                    <TextView
+                        android:id="@+id/pengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="5dp"
+                        android:text="COD, Dikirim, Ambil Sendiri" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_below="@id/atas">
+                    <TextView
+                        android:id="@+id/ongkostxt"
+                        android:text="Ongkos Kirim"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_marginTop="5dp"/>
 
                     <TextView
-                        android:id="@+id/jumlahpesan"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/ongkir"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="10"
-                        />
-
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:text="x" />
-
+                        android:text="Rp. 5000,-"
+                        android:visibility="invisible"
+                        android:gravity="end"
+                        android:layout_toRightOf="@id/ongkostxt"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="16sp"/>
                 </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/mm"
+                android:layout_below="@id/tiga"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/nm"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:background="@drawable/bg_edit"
+                android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/pengiriman"
-                    android:layout_width="match_parent"
+                    android:text="Catatan lain   : "
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="COD, Dikirim, Ambil Sendiri" />
+                    android:layout_gravity="center_vertical"/>
 
+                <TextView
+                    android:id="@+id/request"
+                    android:text="wwwwwww"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/request"
-                android:layout_marginTop="10dp"
+            <LinearLayout
+                android:id="@+id/pembayaran"
                 android:layout_below="@id/mm"
-                android:text="wwwwwww"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edit"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/metodetxt"
+                    android:text="Metode Pembayaran :"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/isibayar"
+                    android:text="Tunai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="right"/>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/tolak"
-                android:layout_below="@id/request"
-                android:text="Tolak"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:id="@+id/layout_rincian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/pembayaran"
+                android:padding="10dp"
+                android:background="@drawable/bg_edit">
+                <TextView
+                    android:text="Rincian Pembayaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/terima"
-                android:layout_below="@id/request"
-                android:layout_toRightOf="@id/tolak"
-                android:text="Proses"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                    <TextView
+                        android:text="Subtotal untuk produk "
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"/>
 
+                    <TextView
+                        android:id="@+id/subtotalproduk"
+                        android:gravity="end"
+                        android:text="Rp. 5000,-"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Subtotal pengiriman"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/subtotalppengiriman"
+                        android:gravity="end"
+                        android:text="0"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="Total Bayar "
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/total"
+                        android:gravity="end"
+                        android:text="Rp. 5000,-"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorGreentxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/layout_rincian"/>
         </RelativeLayout>
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/tolak"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:text="Tolak"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/terima"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:text="Terima"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:background="@color/colorGreenbg"
+            />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

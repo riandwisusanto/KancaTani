@@ -6,28 +6,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:text="Terima Pesanan"
-        android:gravity="center"
+    <RelativeLayout
+        android:id="@+id/header"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="55dp"
+        android:background="@drawable/bg_toolbar"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Surface"
+        >
+        <ImageView
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/btn_back"
+            android:background="@drawable/ic_back_black"
+            android:padding="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            />
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terima Pesanan"
+            android:textColor="@color/colorBlack"
+            android:textSize="22sp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/btn_back"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/bar"
             android:orientation="horizontal"
             android:layout_below="@id/namatoko"
-            android:layout_marginBottom="10dp"
+            android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/fotobarang"
-                android:layout_width="75dp"
+                android:layout_width="70dp"
                 android:layout_height="70dp"/>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/namabarang"
@@ -118,8 +146,12 @@
     <Button
         android:id="@+id/terima"
         android:text="Terima Pesanan Ini"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_kotak_ijo"/>
 
     <LinearLayout
         android:id="@+id/beribintang"

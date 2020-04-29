@@ -4,33 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/header"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center_vertical|start"
-        >
+        android:background="@drawable/bg_toolbar"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?attr/selectableItemBackground"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/btn_back"
-            android:padding="13dp"
-            android:layout_width="55dp"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_back"
-            />
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_back_black"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pesan"
-            android:textColor="@color/colorWhite"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"/>
-    </LinearLayout>
+            android:textColor="@color/colorBlack"
+            android:layout_toRightOf="@id/btn_back"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"/>
+
+    </RelativeLayout>
     <LinearLayout
         app:layout_constraintTop_toBottomOf="@+id/header"
         android:layout_marginTop="55dp"
@@ -44,6 +45,7 @@
                 android:id="@+id/chatlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"/>
         </ScrollView>

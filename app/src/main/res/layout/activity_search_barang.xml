@@ -76,7 +76,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/colorWhite"
-        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:gravity="center">
 
         <Button

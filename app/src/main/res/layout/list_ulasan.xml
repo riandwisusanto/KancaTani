@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginBottom="10dp">
+    android:background="@drawable/bg_list"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/nama"
         android:text="nama"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -24,6 +25,7 @@
         <TextView
             android:id="@+id/rate"
             android:text="5"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -31,6 +33,7 @@
     <TextView
         android:id="@+id/ulasantxt"
         android:text="dasdadasdewe"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

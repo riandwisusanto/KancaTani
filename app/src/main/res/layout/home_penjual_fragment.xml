@@ -24,13 +24,7 @@
                 android:textSize="17sp"
                 app:drawableLeftCompat="@drawable/ic_place_black_24dp"
                 android:drawablePadding="10dp"/>
-            <ImageView
-                android:id="@+id/pilih_lokasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@id/lokasitxt"
-                android:layout_marginLeft="50dp"/>
+
             <ImageButton
                 android:background="@drawable/chat"
                 android:layout_height="wrap_content"
@@ -60,21 +54,13 @@
                     >
                 </com.denzcoskun.imageslider.ImageSlider>
             </RelativeLayout>
-            <ProgressBar
-                android:id="@+id/progressBarUpdate"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_below="@id/update"
-                android:layout_marginTop="5dp"/>
+
             <RelativeLayout
                 android:id="@+id/kotak_saldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/progressBarUpdate"
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/update"
+                android:layout_marginTop="20dp"
                 android:padding="15dp"
                 android:background="@drawable/bg_kotak_ijo"
                 android:elevation="100dp">
@@ -98,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="100.000"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:layout_toRightOf="@id/rptxt"
                     android:layout_below="@id/saldotxt"
                     android:layout_marginLeft="5dp"
@@ -163,7 +149,7 @@
                             android:id="@+id/btriwayat"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:background="@drawable/history"/>
+                            android:background="@drawable/ic_history_white_24dp"/>
                         <TextView
                             android:id="@+id/riwayattxt"
                             android:layout_width="wrap_content"
@@ -176,16 +162,21 @@
                 </LinearLayout>
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/kotak_pesanan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/kotak_saldo"
-                android:layout_marginTop="10dp">
+                android:layout_below="@id/kotak_saldo">
 
                 <TextView
                     android:id="@+id/txtpesananmasuk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pesanan Masuk"/>
+                    android:paddingTop="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Pesanan Masuk"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/pesananmasuk"
@@ -193,10 +184,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtpesananmasuk"
-                    />
+                    tools:listitem="@layout/list_pesanan"
+                    tools:itemCount="3"/>
 
             </RelativeLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_below="@id/kotak_pesanan"/>
         </RelativeLayout>
 
     </ScrollView>

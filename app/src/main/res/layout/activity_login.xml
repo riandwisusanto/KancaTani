@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
     android:background="@drawable/splash_screen1">
 
     <ScrollView
         android:id="@+id/scrol_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
             android:id="@+id/layout_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="20dp">
             <TextView
                 android:id="@+id/welcometxt"
