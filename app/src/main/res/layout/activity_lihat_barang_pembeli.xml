@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pembeli.ui.home.lihat_barang_pembeli">
+    tools:context=".Pembeli.ui.home.lihat_barang_pembeli"
+    android:paddingTop="25dp">
 
     <RelativeLayout
         android:id="@+id/header"
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/colorWhite"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Surface"
         >
         <ImageView
             android:focusable="true"
@@ -53,8 +55,7 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="55dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout

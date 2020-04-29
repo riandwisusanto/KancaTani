@@ -22,7 +22,7 @@
                 android:text="Lokasi Saat Ini"
                 android:textStyle="bold"
                 android:textSize="17sp"
-                app:drawableLeftCompat="@drawable/place"
+                app:drawableLeftCompat="@drawable/ic_place_black_24dp"
                 android:drawablePadding="10dp"/>
             <ImageView
                 android:id="@+id/pilih_lokasi"
