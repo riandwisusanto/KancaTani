@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:paddingHorizontal="7dp"
+    android:paddingBottom="14dp">
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_outline"
+        android:elevation="@dimen/cardview_default_elevation"
+        >
+        <ImageView
+            android:id="@+id/foto_barang"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/liquid"
+            android:scaleType="centerCrop"
+            android:background="@color/colorWhite"/>
+        <TextView
+            android:id="@+id/nama_barang"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benih Padi Unggul"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rp. 50000,-"
+            android:textColor="@color/colorGreentxt"
+            android:textSize="16sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/bintang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_star_black_24dp"
+                    android:text="4.5"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="end"
+                >
+                <TextView
+                    android:id="@+id/jumlahkirim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"/>
+                <TextView
+                    android:id="@+id/jterjualtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terjual"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorBlack"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            >
+
+            <TextView
+                android:id="@+id/kota_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Ponorogo"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

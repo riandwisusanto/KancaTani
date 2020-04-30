@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_screen1">
+
+    <ScrollView
+        android:id="@+id/scrol_regis2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/layout-regis2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/welcometxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masukkan Password"
+                android:layout_marginTop="175dp"
+                android:layout_marginLeft="16dp"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcometxt"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/pass"
+                android:hint="Masukkan Password Anda"
+                android:inputType="textVisiblePassword"
+                android:layout_centerInParent="true"
+                android:importantForAutofill="no"
+                android:layout_marginStart="16dp" />
+
+            <TextView
+                android:id="@+id/teks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_password"
+                android:layout_marginLeft="16dp"
+                android:text="Pastikan Kata Sandi memiliki 8 karakter atau lebih"
+                android:textSize="10sp"
+                android:textStyle="normal"
+                android:textColor="@color/colorPrimary"/>
+
+            <EditText
+                android:id="@+id/et_repassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/teks"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/pass"
+                android:hint="Ulangi Password"
+                android:inputType="textVisiblePassword"
+                android:layout_centerInParent="true"
+                android:importantForAutofill="no"
+                android:layout_marginStart="16dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_daftar3"
+                android:layout_width="121dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/et_repassword"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_tombol"
+                android:text="Selesai"
+                app:drawableRightCompat="@drawable/kanan"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bgLoading"/>
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

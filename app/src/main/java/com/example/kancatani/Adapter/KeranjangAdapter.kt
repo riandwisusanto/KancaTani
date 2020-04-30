@@ -3,6 +3,7 @@ package com.example.kancatani.Adapter
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.PesananModel
 import com.example.kancatani.Model.UlasanModel
 import com.example.kancatani.Pembeli.ui.home.lihat_barang_pembeli
+import com.example.kancatani.Pembeli.ui.keranjang.terima_pesanan
 import com.example.kancatani.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -67,64 +69,72 @@ class KeranjangAdapter(val context: Context, val List : ArrayList<PesananModel>)
             }
             itemView.setOnClickListener {
                 if(list.status == "Dikirim"){
-                    val dialog = Dialog(context)
-                    dialog.setContentView(R.layout.activity_terima_pesanan)
 
-                    val terima = dialog.findViewById<Button>(R.id.terima)
-                    val rat = dialog.findViewById<LinearLayout>(R.id.beribintang)
-                    val rating = dialog.findViewById<RatingBar>(R.id.rating)
-                    val ulasan = dialog.findViewById<EditText>(R.id.ulasan)
-                    val pesananselesai = dialog.findViewById<Button>(R.id.pesananselesai)
+                    val bundle = Bundle()
+                    bundle.putSerializable("list", list)
+                    val intent = Intent(context, terima_pesanan::class.java)
+                    intent.putExtras(bundle)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(intent)
 
-                    val fotobarang = dialog.findViewById<ImageView>(R.id.fotobarang)
-                    val namabarang = dialog.findViewById<TextView>(R.id.namabarang)
-                    val status = dialog.findViewById<TextView>(R.id.status)
-                    val waktu_proses = dialog.findViewById<TextView>(R.id.waktuproses)
-                    val harga = dialog.findViewById<TextView>(R.id.harga)
-                    val jumlah = dialog.findViewById<TextView>(R.id.jumlah)
-                    val waktu_pesan = dialog.findViewById<TextView>(R.id.waktu)
-
-                    Picasso.get().load(list.fotobarang).into(fotobarang)
-                    namabarang.setText(list.namabarang)
-                    status.setText(list.status)
-                    waktu_proses.setText(list.waktu_proses)
-                    harga.setText(list.harga_total.toString())
-                    jumlah.setText("x" + list.jumlah.toString())
-                    waktu_pesan.setText(list.waktu_pesan)
-
-                    terima.setOnClickListener {
-                        rat.visibility = View.VISIBLE
-                    }
-
-                    pesananselesai.setOnClickListener {
-                        var ulas = ulasan.text.toString()
-                        if(ulas.isEmpty()){
-                            ulas = "-"
-                        }
-                        val refulasan = FirebaseDatabase.getInstance().getReference("ulasan")
-                        val id_ulasan = refulasan.push().key
-                        val value = UlasanModel(id_ulasan.toString(), list.id, list.id_barang, list.id_penjual, list.id_pembeli,
-                            rating.numStars.toString(), ulas)
-                        refulasan.child(id_ulasan.toString()).setValue(value)
-
-                        val refx = FirebaseDatabase.getInstance().getReference("keranjang")
-                            .child(list.id)
-                        val sdf = SimpleDateFormat("dd/M/yyyy hh.mm")
-                        val waktu = sdf.format(Date())
-                        refx.child("waktu_diterima").setValue(waktu.toString())
-
-                        kalkulasibintang(list.id_barang)
-
-                        setterjual(list.id_barang, list.jumlah)
-
-                        val ref = FirebaseDatabase.getInstance().getReference("keranjang")
-                            .child(list.id)
-                        ref.child("status_diterima").setValue(true).addOnCompleteListener {
-                            Toast.makeText(context, "Barang telah diterima", Toast.LENGTH_SHORT).show()
-                            dialog.dismiss()
-                        }
-                    }
-                    dialog.show()
+//                    val dialog = Dialog(context)
+//                    dialog.setContentView(R.layout.activity_terima_pesanan)
+//
+//                    val terima = dialog.findViewById<Button>(R.id.terima)
+//                    val rat = dialog.findViewById<LinearLayout>(R.id.beribintang)
+//                    val rating = dialog.findViewById<RatingBar>(R.id.rating)
+//                    val ulasan = dialog.findViewById<EditText>(R.id.ulasan)
+//                    val pesananselesai = dialog.findViewById<Button>(R.id.pesananselesai)
+//
+//                    val fotobarang = dialog.findViewById<ImageView>(R.id.fotobarang)
+//                    val namabarang = dialog.findViewById<TextView>(R.id.namabarang)
+//                    val status = dialog.findViewById<TextView>(R.id.status)
+//                    val waktu_proses = dialog.findViewById<TextView>(R.id.waktuproses)
+//                    val harga = dialog.findViewById<TextView>(R.id.harga)
+//                    val jumlah = dialog.findViewById<TextView>(R.id.jumlah)
+//                    val waktu_pesan = dialog.findViewById<TextView>(R.id.waktu)
+//
+//                    Picasso.get().load(list.fotobarang).into(fotobarang)
+//                    namabarang.setText(list.namabarang)
+//                    status.setText(list.status)
+//                    waktu_proses.setText(list.waktu_proses)
+//                    harga.setText(list.harga_total.toString())
+//                    jumlah.setText("x" + list.jumlah.toString())
+//                    waktu_pesan.setText(list.waktu_pesan)
+//
+//                    terima.setOnClickListener {
+//                        rat.visibility = View.VISIBLE
+//                    }
+//
+//                    pesananselesai.setOnClickListener {
+//                        var ulas = ulasan.text.toString()
+//                        if(ulas.isEmpty()){
+//                            ulas = "-"
+//                        }
+//                        val refulasan = FirebaseDatabase.getInstance().getReference("ulasan")
+//                        val id_ulasan = refulasan.push().key
+//                        val value = UlasanModel(id_ulasan.toString(), list.id, list.id_barang, list.id_penjual, list.id_pembeli,
+//                            rating.numStars.toString(), ulas)
+//                        refulasan.child(id_ulasan.toString()).setValue(value)
+//
+//                        val refx = FirebaseDatabase.getInstance().getReference("keranjang")
+//                            .child(list.id)
+//                        val sdf = SimpleDateFormat("dd/M/yyyy hh.mm")
+//                        val waktu = sdf.format(Date())
+//                        refx.child("waktu_diterima").setValue(waktu.toString())
+//
+//                        kalkulasibintang(list.id_barang)
+//
+//                        setterjual(list.id_barang, list.jumlah)
+//
+//                        val ref = FirebaseDatabase.getInstance().getReference("keranjang")
+//                            .child(list.id)
+//                        ref.child("status_diterima").setValue(true).addOnCompleteListener {
+//                            Toast.makeText(context, "Barang telah diterima", Toast.LENGTH_SHORT).show()
+//                            dialog.dismiss()
+//                        }
+//                    }
+//                    dialog.show()
                 }
                 else{
                     val intent = Intent(context, lihat_barang_pembeli::class.java)

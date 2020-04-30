@@ -16,10 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Pembeli.ui.home.Etalase_penjual"></activity>
+        <activity android:name=".Penjual.ui.Lapak.tambah_produk"/>
+        <activity android:name=".Penjual.ui.Lapak.riwayat_transaksi"/>
+        <activity android:name=".Penjual.ui.Lapak.detail_produk"/>
         <activity android:name=".Chat.MessageActivity" />
         <activity android:name=".Chat.ChatActivity" />
         <activity android:name=".Pembeli.ui.home.keranjang_barang_pembeli" />
         <activity android:name=".Pembeli.ui.home.lihat_barang_pembeli" />
+        <activity android:name=".Penjual.ui.Home.detail_pesanan"/>
+        <activity android:name=".Pembeli.ui.keranjang.terima_pesanan"/>
         <activity android:name=".Pembeli.ui.home.SearchBarang" />
         <activity android:name=".SplashScreen.SplashScrennMenu" />
         <activity android:name=".SplashScreen.SplashScreen2" />

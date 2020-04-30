@@ -112,7 +112,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-
+        val pesan = view.findViewById<ImageButton>(R.id.btpesan)
+        pesan.setOnClickListener {
+            val intent = Intent(this.context, ChatActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
