@@ -54,7 +54,7 @@ class detail_produk : AppCompatActivity(){
         }
 
         hapus.setOnClickListener {
-            hapus(applicationContext, list)
+            hapus(list)
         }
 
         btn_back.setOnClickListener {
@@ -62,8 +62,8 @@ class detail_produk : AppCompatActivity(){
         }
     }
 
-    private fun hapus(context: Context, list: BarangModel){
-        val dialog = AlertDialog.Builder(context)
+    private fun hapus(list: BarangModel){
+        val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Hapus")
         dialog.setMessage("Hapus " + list.nama + " ?")
             .setCancelable(true)
@@ -72,8 +72,9 @@ class detail_produk : AppCompatActivity(){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         val ref = FirebaseDatabase.getInstance().getReference("barang")
                         ref.child(list.id).removeValue().addOnCompleteListener {
-                            Toast.makeText(context, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Berhasil Dihapus", Toast.LENGTH_SHORT).show()
                         }
+                        finish()
                         dialog!!.dismiss()
                     }
                 }

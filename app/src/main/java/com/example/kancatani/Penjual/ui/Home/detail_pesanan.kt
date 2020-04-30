@@ -56,6 +56,7 @@ class detail_pesanan : AppCompatActivity() {
 
             })
 
+            Picasso.get().load(bal.fotobarang).into(fotobarang)
             namabarang.setText(bal.namabarang)
             harga.setText("Rp." + bal.harga.toString() + ",-")
             jumlah.setText(bal.jumlah.toString())
