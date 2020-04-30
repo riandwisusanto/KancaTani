@@ -121,7 +121,15 @@
             </LinearLayout>
 
         </LinearLayout>
-
+    <Button
+        android:id="@+id/terima"
+        android:text="Terima Pesanan Ini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_kotak_ijo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
