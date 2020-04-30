@@ -62,7 +62,11 @@ class lapak_penjual : Fragment() {
 
         val tambahbarang= root.findViewById<ImageView>(R.id.tambah_barang)
         tambahbarang.setOnClickListener {
-            startActivity(Intent(context?.applicationContext, tambah_produk::class.java))
+            if(SP.loadSP(context?.applicationContext!!, "provinsi") == "x"){
+                Toast.makeText(context, "Alamat belum ditentukan", Toast.LENGTH_SHORT).show()
+            }else{
+                startActivity(Intent(context?.applicationContext, tambah_produk::class.java))
+            }
         }
 
         val cari = root.findViewById<EditText>(R.id.text_search1)
@@ -118,10 +122,16 @@ class lapak_penjual : Fragment() {
                             }
                             loading.visibility = View.GONE
                         }
+                        else{
+                            loading.visibility = View.GONE
+                        }
                     }
                     adapter = BarangAdapter(context!!, list)
                     adapter.notifyDataSetChanged()
                     listbarang.adapter = adapter
+                }
+                else{
+                    loading.visibility = View.GONE
                 }
             }
         })

@@ -81,11 +81,12 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this,"Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi",
                     Toast.LENGTH_LONG).show()
+                loading.visibility = View.GONE
                 auth.signOut()
             }
         }else{
             loading.visibility = View.GONE
-            Toast.makeText(this,"Email atau katasandi anda salah",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"Gagal login",Toast.LENGTH_LONG).show()
         }
     }
 
@@ -118,6 +119,7 @@ class LoginActivity : AppCompatActivity() {
                     val value = data.getValue(UserModel::class.java)
                     SP.createSP(applicationContext, "username", value!!.nama)
                     SP.createSP(applicationContext, "fotoprofil", value.foto)
+                    SP.createSP(applicationContext, "provinsi", value.provinsi)
                     SP.createSP(applicationContext, "id", auth.currentUser!!.uid)
                     SP.createSP(applicationContext, "status", "login")
                     if(value.status == "pembeli"){
