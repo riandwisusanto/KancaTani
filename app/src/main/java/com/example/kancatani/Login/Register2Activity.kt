@@ -73,47 +73,56 @@ class Register2Activity : AppCompatActivity() {
     }
 
     private fun createUserWithEmail(){
-        auth.createUserWithEmailAndPassword(email,et_password.text.toString()).addOnCompleteListener { task->
+        if(intent.getStringExtra("status") == "penjual"){
+            val alertDialog = AlertDialog.Builder(this)
+            uploadImageToFirebaseStorage()
+            alertDialog.setTitle("Tunggu Konfirmasi !")
+            alertDialog.setMessage("Silahkan menunggu data anda divalidasi oleh pihak KancaTani, Verifikasi akun akan" +
+                        "dikirim melalui email anda dalam 1x24jam")
+                .setCancelable(false)
+                .setNegativeButton("OKE", object: DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, id: Int) {
+                        dialog?.cancel()
+                        startActivity(Intent(this@Register2Activity, LoginActivity::class.java))
+                        finish()
+                    }
+                })
+                .create().show()
+        }
+        else{
+            auth.createUserWithEmailAndPassword(email,et_password.text.toString()).addOnCompleteListener { task->
             if(task.isSuccessful){
-                if(intent.getStringExtra("status") == "penjual"){
-                    val alertDialog = AlertDialog.Builder(this)
-                    uploadImageToFirebaseStorage()
-                    alertDialog.setTitle("Tunggu Konfirmasi !")
-                    alertDialog.setMessage("Silahkan menunggu data anda divalidasi oleh pihak KancaTani, Verifikasi akun akan" +
-                                "dikirim melalui email anda dalam 1x24jam")
-                        .setCancelable(false)
-                        .setNegativeButton("OKE", object: DialogInterface.OnClickListener{
-                            override fun onClick(dialog: DialogInterface?, id: Int) {
-                                dialog?.cancel()
-                                startActivity(Intent(this@Register2Activity, LoginActivity::class.java))
-                                finish()
-                            }
-                        })
-                        .create().show()
-                }
-                else{
-                    val user = auth.currentUser
-                    user?.sendEmailVerification()?.addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            uploadImageToFirebaseStorage()
-                            Toast.makeText(this.applicationContext, "Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi", Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this@Register2Activity, LoginActivity::class.java))
-                            finish()
-                        }
+                val user = auth.currentUser
+                user?.sendEmailVerification()?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        uploadImageToFirebaseStorage()
+                        Toast.makeText(this.applicationContext, "Verifikasi akun anda, KancaTani telah mengirimkan email verifikasi", Toast.LENGTH_LONG).show()
+                         startActivity(Intent(this@Register2Activity, LoginActivity::class.java))
+                        finish()
                     }
                 }
+            }
             }
         }
     }
 
     private fun saveUserToDB(string: String){
-        val userId = auth.currentUser!!.uid
+        var userId = ""
+        var alamat = "-"
+        if(intent.getStringExtra("status") == "penjual"){
+            userId = ref.push().key.toString()
+            status = "Penjual"
+            alamat = et_password.text.toString()
+        }
+        else{
+            userId = auth.currentUser!!.uid
+        }
         val dataUser = UserModel(userId,
             status,
-            "-",
-            " ",
-            " ",
-            " ",
+            alamat,
+            "x",
+            "x",
+            "x",
             email,
             "-",
             nama,
@@ -126,7 +135,13 @@ class Register2Activity : AppCompatActivity() {
     }
 
     private fun uploadImageToFirebaseStorage() {
-        val uid = auth.currentUser!!.uid
+        var uid = ""
+        if(intent.getStringExtra("status") == "penjual"){
+            uid = ref.push().key.toString()
+        }
+        else{
+            uid = auth.currentUser!!.uid
+        }
         if(fototoko == "x"){
             saveUserToDB("x")
         }
