@@ -124,6 +124,7 @@
             <Spinner
                 android:id="@+id/kondisi"
                 android:layout_marginTop="5dp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
 
@@ -143,6 +144,7 @@
             <Spinner
                 android:id="@+id/kategori"
                 android:layout_marginTop="5dp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"/>
 

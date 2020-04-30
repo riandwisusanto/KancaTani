@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_list"
-    android:padding="10dp">
+    android:background="@drawable/bg_putih_in"
+    android:padding="10dp"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id="@+id/nama"

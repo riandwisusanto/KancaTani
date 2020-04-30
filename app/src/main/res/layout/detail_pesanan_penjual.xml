@@ -218,7 +218,7 @@
                     <TextView
                         android:id="@+id/jasakirimtxt"
                         android:text="Jasa Kirim"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"/>
                     <TextView
@@ -237,7 +237,7 @@
                     <TextView
                         android:id="@+id/ongkostxt"
                         android:text="Ongkos Kirim"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:layout_marginTop="5dp"/>
