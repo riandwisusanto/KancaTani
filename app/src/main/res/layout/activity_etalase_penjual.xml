@@ -36,98 +36,104 @@
             android:layout_toRightOf="@+id/btn_back"
             android:layout_centerVertical="true"/>
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/banner"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
 
-        <ImageView
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/logo_splash"/>
-
-        <View
-            android:id="@+id/pengenal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#99000000"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:padding="10dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/fototoko"
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/namatoko"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UD Mandiri"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/lokasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ponorogo"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorWhite"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/banner">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/etalase"
+            <RelativeLayout
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"/>
+                android:layout_height="200dp">
 
-            <TextView
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/logo_splash"/>
+
+                <View
+                    android:id="@+id/pengenal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#99000000"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="10dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/fototoko"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp">
+
+                        <TextView
+                            android:id="@+id/namatoko"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="UD Mandiri"
+                            android:textSize="18sp"
+                            android:textColor="@color/colorWhite"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/lokasi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ponorogo"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorWhite"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/etalase"
-                android:text="Tidak ada lagi produk"
-                android:padding="10dp"
-                android:gravity="center"
-                android:textColor="@color/colorGreentxt"
-                android:background="@color/colorGreyMuda"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="200dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:layout_below="@id/banner">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/etalase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/etalase"
+                    android:text="Tidak ada lagi produk"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorGreentxt"
+                    android:background="@color/colorGreyMuda"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"/>
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
     <RelativeLayout
