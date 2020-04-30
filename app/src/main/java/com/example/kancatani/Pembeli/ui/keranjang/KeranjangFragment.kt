@@ -1,6 +1,7 @@
 package com.example.kancatani.Pembeli.ui.keranjang
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kancatani.Adapter.KeranjangAdapter
 import com.example.kancatani.Adapter.RiwayatAdapter
 import com.example.kancatani.Model.PesananModel
+import com.example.kancatani.Penjual.ui.Lapak.riwayat_transaksi
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
 import com.google.firebase.database.DataSnapshot
@@ -46,7 +48,7 @@ class KeranjangFragment : Fragment() {
 
         val riwayat = root.findViewById<Button>(R.id.riwayat)
         riwayat.setOnClickListener {
-            riwayat()
+            startActivity(Intent(context?.applicationContext, riwayat_transaksi::class.java))
         }
 
         return root

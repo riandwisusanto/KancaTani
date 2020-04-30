@@ -61,6 +61,10 @@ class lihat_barang_pembeli : AppCompatActivity() {
         ulasan.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         adaper = UlasanAdapter(this, listulasan)
         loadulasan(id)
+
+        btn_back.setOnClickListener {
+            finish()
+        }
     }
 
     private fun load(id: String){

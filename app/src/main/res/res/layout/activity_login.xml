@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/splash_screen1">
+
+    <ScrollView
+        android:id="@+id/scrol_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/layout_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/welcometxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selamat Datang"
+                android:layout_marginTop="175dp"
+                android:layout_marginLeft="16dp"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/welcome2txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcometxt"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="16dp"
+                android:text="Silahkan masuk untuk melanjutkan"
+                android:textSize="15sp"
+                android:textColor="@color/colorGraytxt"
+                android:layout_marginStart="16dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/formusername"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcome2txt"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/email"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:layout_centerInParent="true"
+                android:importantForAutofill="no"
+                android:layout_marginStart="16dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/formpassword"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/formusername"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:drawablePadding="10dp"
+                app:drawableLeftCompat="@drawable/pass"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_centerInParent="true"
+                android:importantForAutofill="no"
+                android:layout_marginStart="16dp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_masuk"
+                android:layout_width="121dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/formpassword"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_tombol"
+                android:text="Masuk"
+                app:drawableRightCompat="@drawable/kanan"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true" />
+            <TextView
+                android:id="@+id/note1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_masuk"
+                android:layout_marginTop="100dp"
+                android:text="Belum punya akun ?"
+                android:textColor="#979797"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp" />
+            <TextView
+                android:id="@+id/link-regis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_masuk"
+                android:layout_toRightOf="@id/note1"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="5dp"
+                android:text="Daftar Sekarang"
+                android:textStyle="bold"
+                android:textColor="@color/colorGreentxt"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/note1" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bgLoading"/>
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

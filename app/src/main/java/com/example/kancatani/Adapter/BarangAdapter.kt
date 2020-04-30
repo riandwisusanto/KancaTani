@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ import com.example.kancatani.Interface.ItemClickListener
 import com.example.kancatani.Model.BarangModel
 import com.example.kancatani.Model.UserModel
 import com.example.kancatani.Pembeli.ui.home.lihat_barang_pembeli
+import com.example.kancatani.Penjual.ui.Lapak.detail_produk
 import com.example.kancatani.Penjual.ui.Lapak.edit_barang
 import com.example.kancatani.R
 import com.example.kancatani.SharePreference.Sharepreference
@@ -76,27 +78,33 @@ class BarangAdapter(val context: Context, val List : ArrayList<BarangModel>) :
                 itemView.setOnClickListener {
 
                     if(SP.loadSP(context, "st") == "penjual"){
-                        val dialog = Dialog(context)
-                        dialog.setTitle("Detail Barang")
-                        dialog.setContentView(R.layout.detail_barang_lapak)
-
-                        load(dialog, bal)
-
-                        val edit = dialog.findViewById<Button>(R.id.edit)
-                        val hapus = dialog.findViewById<Button>(R.id.hapus)
-
-                        edit.setOnClickListener {
-                            val intent = Intent(context, edit_barang::class.java)
-                            intent.putExtra("id", bal.id)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            context.startActivity(intent)
-                        }
-
-                        hapus.setOnClickListener {
-                            hapus(context, bal, dialog)
-                        }
-
-                        dialog.show()
+                        val bundle = Bundle()
+                        bundle.putSerializable("list", bal)
+                        val intent = Intent(context, detail_produk::class.java)
+                        intent.putExtras(bundle)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
+//                        val dialog = Dialog(context)
+//                        dialog.setTitle("Detail Barang")
+//                        dialog.setContentView(R.layout.detail_barang_lapak)
+//
+//                        load(dialog, bal)
+//
+//                        val edit = dialog.findViewById<Button>(R.id.edit)
+//                        val hapus = dialog.findViewById<Button>(R.id.hapus)
+//
+//                        edit.setOnClickListener {
+//                            val intent = Intent(context, edit_barang::class.java)
+//                            intent.putExtra("id", bal.id)
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                            context.startActivity(intent)
+//                        }
+//
+//                        hapus.setOnClickListener {
+//                            hapus(context, bal, dialog)
+//                        }
+//
+//                        dialog.show()
                     }
 
                     else{

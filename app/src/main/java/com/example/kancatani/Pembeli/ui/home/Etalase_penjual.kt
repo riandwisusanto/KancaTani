@@ -34,6 +34,10 @@ class Etalase_penjual : AppCompatActivity() {
         etalase.layoutManager = GridLayoutManager(this, 2)
         adapter = BarangAdapter(this, list)
         loadbarang(id)
+
+        btn_back.setOnClickListener {
+            finish()
+        }
     }
 
     private fun loadbarang(id: String){

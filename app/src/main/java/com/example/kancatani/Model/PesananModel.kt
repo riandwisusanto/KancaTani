@@ -1,5 +1,7 @@
 package com.example.kancatani.Model
 
+import java.io.Serializable
+
 data class PesananModel(
     var id: String = "",
     var id_barang: String = "",
@@ -17,6 +19,7 @@ data class PesananModel(
     var status: String = "",
     var waktu_pesan: String = "",
     var waktu_proses: String = "",
+    var waktu_kirim: String = "",
     var waktu_diterima: String = "",
     var status_diterima: Boolean = false
-)
+) : Serializable
