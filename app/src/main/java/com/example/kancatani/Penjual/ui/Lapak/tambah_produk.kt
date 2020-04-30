@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -149,7 +150,12 @@ class tambah_produk : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             fotoselected = data.data
-            println("fotoselected" + fotoselected.toString())
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, fotoselected)
+
+            fotobarang.visibility = View.VISIBLE
+            simpan.visibility = View.VISIBLE
+
+            fotobarang.setImageBitmap(bitmap)
         }
     }
 
@@ -205,7 +211,8 @@ class tambah_produk : AppCompatActivity() {
                             stok.toInt()
                             , kondisit , vale!!.provinsi, vale.kota, vale.kecamatan, 0, ongkir)
                         ref.child(id).setValue(value).addOnCompleteListener {
-                            Toast.makeText(applicationContext, "Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Barang Berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                            finish()
                         }
                     }
                 }

@@ -208,6 +208,7 @@ class edit_barang : AppCompatActivity() {
 
                     ref.setValue(vl).addOnCompleteListener {
                         Toast.makeText(applicationContext, "Berhasil Diubah", Toast.LENGTH_SHORT).show()
+                        finish()
                     }
                 }
             }
