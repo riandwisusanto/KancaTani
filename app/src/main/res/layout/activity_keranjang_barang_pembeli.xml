@@ -47,7 +47,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:layout_marginBottom="50dp">
 
            <LinearLayout
                android:id="@+id/satu"
@@ -100,7 +101,7 @@
 
                <TextView
                    android:id="@+id/belitxt"
-                   android:text="Yang dibeli "
+                   android:text="Produk yang dibeli "
                    android:textSize="18sp"
                    android:textStyle="bold"
                    android:layout_marginBottom="5dp"
@@ -258,8 +259,6 @@
                            android:layout_marginTop="5dp"
                            android:textSize="16sp"/>
                    </LinearLayout>
-
-
 
                </RelativeLayout>
            </LinearLayout>

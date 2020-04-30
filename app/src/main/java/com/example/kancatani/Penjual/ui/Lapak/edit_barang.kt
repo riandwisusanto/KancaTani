@@ -133,6 +133,10 @@ class edit_barang : AppCompatActivity() {
         simpan.setOnClickListener {
             uploadImageToFirebaseStorage(intent.getStringExtra("id").toString())
         }
+
+        btn_back.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

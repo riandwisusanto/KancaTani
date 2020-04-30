@@ -60,9 +60,9 @@ class lapak_penjual : Fragment() {
         listbarang.layoutManager = GridLayoutManager(this.context, 2)
         loadbarang("", false)
 
-        val tambahbarang= root.findViewById<Button>(R.id.tambah_barang)
+        val tambahbarang= root.findViewById<ImageView>(R.id.tambah_barang)
         tambahbarang.setOnClickListener {
-            tambahbarang()
+            startActivity(Intent(context?.applicationContext, tambah_produk::class.java))
         }
 
         val cari = root.findViewById<EditText>(R.id.text_search1)
@@ -88,9 +88,9 @@ class lapak_penjual : Fragment() {
             }
         }
 
-        val riwayat = root.findViewById<Button>(R.id.riwayat)
+        val riwayat = root.findViewById<ImageView>(R.id.riwayat)
         riwayat.setOnClickListener {
-            riwayat()
+            startActivity(Intent(context?.applicationContext, riwayat_transaksi::class.java))
         }
         return root
     }

@@ -1,5 +1,7 @@
 package com.example.kancatani.Model
 
+import java.io.Serializable
+
 data class BarangModel(
     var id: String = "",
     var id_lapak: String = "",
@@ -17,4 +19,4 @@ data class BarangModel(
     var kecamatan: String = "",
     var terjual: Int = 0,
     var ongkir: Int = 1000
-)
+) : Serializable

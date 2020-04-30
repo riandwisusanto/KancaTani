@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_screen1">
+
+    <ScrollView
+        android:id="@+id/scrol_regis"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:id="@+id/layout_regis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/buatakuntxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buat Akun"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="16dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+            <EditText
+                android:id="@+id/et_nama"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/buatakuntxt"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:drawableLeft="@drawable/person"
+                android:drawablePadding="10dp"
+                android:inputType="textPersonName"
+                android:hint="Nama Anda"
+                android:layout_centerInParent="true"/>
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nama"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:drawableLeft="@drawable/email"
+                android:drawablePadding="10dp"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:layout_centerInParent="true"/>
+
+            <Button
+                android:id="@+id/btn_daftar1"
+                android:layout_width="121dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/et_email"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_tombol"
+                android:text="Daftar"
+                android:drawableRight="@drawable/kanan"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/loading1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bgLoading"/>
+        <ProgressBar
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

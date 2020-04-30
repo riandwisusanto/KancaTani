@@ -105,6 +105,10 @@ class keranjang_barang_pembeli : AppCompatActivity() {
             buatpesanan()
         }
 
+        btn_back.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun load(id: String){
@@ -153,7 +157,7 @@ class keranjang_barang_pembeli : AppCompatActivity() {
             SP.loadSP(this, "username"), SP.loadSP(this, "fotobarang"),
             namabarang.text.toString(), harga.text.toString().toInt(), SP.loadSP(this, "jasapengirim"),
             jumlahbarang.text.toString().toInt(), pesan, "Tunai", total.text.toString().toInt(), "menunggu",
-            waktu.toString(), "x", "x", false)
+            waktu.toString(), "-", "-", "-",false)
 
         ref.child(id).setValue(value).addOnCompleteListener {
             Toast.makeText(this, "Pesanan Dibuat", Toast.LENGTH_SHORT).show()
